@@ -1,4 +1,6 @@
-import "./App.css";
+import "./normalize.css"
+import "./root.css"
+import "./app.css"
 import {
   ApolloProvider,
   ApolloClient,

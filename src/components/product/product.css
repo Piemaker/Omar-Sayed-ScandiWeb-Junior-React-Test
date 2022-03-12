@@ -1,0 +1,43 @@
+@import url("../../root.css");
+.product__container{
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-2);
+    border-radius: var(--borderRadius);
+    transition: all 0.5s ease;
+}
+
+img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+.product__image__container{
+    max-height: 250px;
+}
+.product__text__container{
+    display: flex;
+    flex-direction: column;
+    font-family: var(--body-font);
+    font-size: 0.9rem;
+}
+.product__text--muted{
+    color: var(--grey-400);
+    font-weight: 100;
+    margin: 0 0.25rem 0.25rem 0;
+}
+p{
+    margin: 0;
+    padding-left: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+.product__container:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: var(--shadow-4);
+}
+@media only screen and (max-width: 1170px) {
+    .product__container{
+        margin: 0 1rem 0 1rem ;
+    }
+}

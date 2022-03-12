@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { GET_CATEGORIES_NAME } from "../GraphQl/Queries";
+import { GET_CATEGORIES_NAME, GET_PRODUCTS } from "../GraphQl/Queries";
 import {client} from "../App"
+import Product from "./product/Product";
 export default class PLP extends Component {
   constructor(props) {
     super(props);
@@ -17,23 +18,49 @@ export default class PLP extends Component {
     // console.log("🚀 ~ file: PLP.jsx ~ line 18 ~ PLP ~ fetchCategory= ~ data, loading, error", data, loading, error)
     this.setState({ data, loading, error });
   };
+  fetchProducts = async (productCategory) =>{
+      const { data, loading, error } = await client.query({
+        query: GET_PRODUCTS,
+      });
+      console.log("🚀 ~ file: PLP.jsx ~ line 25 ~ PLP ~ fetchProducts= ~ data, loading, error", data, loading, error)
+      this.setState({ data, loading, error });
+  }
 
   componentDidMount() {
-    this.fetchCategory();
+    this.fetchProducts();
+
   }
   render() {
     const { loading, error, data } = this.state;
     if (loading) {
-      return <h1>Loading...</h1>;
+      return (<h1>Loading...</h1>)
     }
     if (error) {
-      return <h1>{error}</h1>;
+      return (<h1>{error}</h1>)
     }
-    if (data.categories) {
-      return data.categories.map((category,index) => {
-        return <div key = {index}>{category.name}</div>;
-      });
-    }
+    if (data) {
+      return (
+        <main>
+          <section className="grid-container">
+
+          {data.category.products.map(product =>{
+            // TODO change prices according to user selection
+            const price = product.prices[0];
+            const {amount, currency: {symbol}} = price;
+            const gallery = product.gallery[0];
+            const {name} = product
+            // TODO add out of stock overlay based on quantity
+
+            return (
+              <Product {...{name, amount, symbol, gallery}}/>
+            )
+          })}
+            </section>
+
+        </main>
+      );
   }
 
 }   
+
+}
