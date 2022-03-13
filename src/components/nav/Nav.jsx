@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import "./nav.css";
 export default class Nav extends Component {
   render() {
+      const { categories, currencies, setCategory } = this.props;
+      // TODO use currencies in currency overlay
     return (
       <nav className="nav">
         <div className="nav__category-items">
           <ul>
-            <li>women</li>
-            <li>men</li>
-            <li>kids</li>
+            {categories.map((category,index) =>{
+                return(
+                    <button key = {`${index}${category.name}`} value = {category.name} onClick = {function(e){setCategory(e.target.value)}}>{category.name}</button>
+                )
+            })}
           </ul>
         </div>
         <div className="nav__logo__container">

@@ -9,15 +9,17 @@
   margin: 0;
   padding: 0;
 }
-.nav__category-items ul li {
+.nav__category-items ul button {
   display: block;
+  background: none;
+  border: none;
   text-transform: uppercase;
   font-family: var(--heading-font);
   padding: 1rem;
   color: var(--grey-600);
 }
 
-.nav__category-items ul li:hover {
+.nav__category-items ul button:hover {
   color: var(--green-400);
   border-bottom: solid 2px var(--green-400);
   cursor: pointer;

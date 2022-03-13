@@ -12,6 +12,7 @@ import { onError } from "@apollo/client/link/error";
 import React, { Component } from "react";
 import PLP from "./components/Product-Listing-Page/PLP";
 import Nav from "./components/nav/Nav";
+import { GET_ALL_DATA, GET_PRODUCTS } from "./GraphQl/Queries";
 
 const errorLink = onError((graphqlErrors, networkError) => {
   if (graphqlErrors) {
@@ -26,12 +27,60 @@ export const client = new ApolloClient({
   link: link,
 });
 export default class App extends Component {
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <Nav />
-        <PLP />
-      </ApolloProvider>
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      loading: true,
+      error: false,
+      category: "all",
+    };
+  }
+  fetchAllData = async (categoryName) => {
+    const { data, loading, error } = await client.query({
+      query: GET_ALL_DATA,
+      variables: { categoryName },
+    });
+
+    console.log(
+      "🚀 ~ file: PLP.jsx ~ line 25 ~ PLP ~ fetchProducts= ~ data, loading, error",
+      data,
+      loading,
+      error
     );
+    this.setState({ data, loading, error });
+  };
+  setCategory = (category) => {
+    this.setState({ category });
+  };
+
+  componentDidMount() {
+    this.fetchAllData({ title: this.state.category });
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.category !== prevState.category) {
+      this.fetchAllData({ title: this.state.category });
+    }
+  }
+  render() {
+    const { loading, error, data } = this.state;
+    if (loading) {
+      return <h1>Loading...</h1>;
+    }
+    if (error) {
+      return <h1>{error}</h1>;
+    }
+    if (data) {
+      return (
+        <ApolloProvider client={client}>
+          <Nav
+            categories={data.categories}
+            currencies={data.currencies}
+            setCategory={this.setCategory}
+          />
+          <PLP category={data.category} />
+        </ApolloProvider>
+      );
+    }
   }
 }
