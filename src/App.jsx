@@ -1,6 +1,6 @@
-import "./normalize.css"
-import "./root.css"
-import "./app.css"
+import "./normalize.css";
+import "./root.css";
+import "./app.css";
 import {
   ApolloProvider,
   ApolloClient,
@@ -10,7 +10,8 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import React, { Component } from "react";
-import PLP from "./components/PLP";
+import PLP from "./components/Product-Listing-Page/PLP";
+import Nav from "./components/nav/Nav";
 
 const errorLink = onError((graphqlErrors, networkError) => {
   if (graphqlErrors) {
@@ -26,8 +27,11 @@ export const client = new ApolloClient({
 });
 export default class App extends Component {
   render() {
-    return <ApolloProvider client={client}>
-          <PLP/>
-      </ApolloProvider>;
+    return (
+      <ApolloProvider client={client}>
+        <Nav />
+        <PLP />
+      </ApolloProvider>
+    );
   }
 }

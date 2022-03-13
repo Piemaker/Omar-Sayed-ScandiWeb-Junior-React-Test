@@ -14,6 +14,7 @@ export const GET_PRODUCTS = gql`
     category(input: { title: "all" }) {
       name
       products {
+        id
         name
         prices {
           amount

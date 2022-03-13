@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { GET_CATEGORIES_NAME, GET_PRODUCTS } from "../GraphQl/Queries";
-import {client} from "../App"
-import Product from "./product/Product";
+import { GET_CATEGORIES_NAME, GET_PRODUCTS } from "../../GraphQl/Queries";
+import {client} from "../../App"
+import Product from "../product/Product";
+import "./plp.css"
 export default class PLP extends Component {
   constructor(props) {
     super(props);
@@ -41,22 +42,27 @@ export default class PLP extends Component {
     if (data) {
       return (
         <main>
+          <h2 className="category-title">{data.category.name}</h2>
           <section className="grid-container">
+            {data.category.products.map((product) => {
+              // TODO change prices according to user selection
+              const price = product.prices[0];
+              const {
+                amount,
+                currency: { symbol },
+              } = price;
+              const gallery = product.gallery[0];
+              const { name, id, inStock } = product;
+              // TODO add out of stock overlay based on quantity
 
-          {data.category.products.map(product =>{
-            // TODO change prices according to user selection
-            const price = product.prices[0];
-            const {amount, currency: {symbol}} = price;
-            const gallery = product.gallery[0];
-            const {name} = product
-            // TODO add out of stock overlay based on quantity
-
-            return (
-              <Product {...{name, amount, symbol, gallery}}/>
-            )
-          })}
-            </section>
-
+              return (
+                <Product
+                  key={id}
+                  {...{ name, amount, symbol, gallery, inStock }}
+                />
+              );
+            })}
+          </section>
         </main>
       );
   }

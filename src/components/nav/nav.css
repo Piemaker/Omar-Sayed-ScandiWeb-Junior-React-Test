@@ -1,0 +1,70 @@
+.nav {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  margin: 1rem 0 1rem 0;
+}
+.nav__category-items ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.nav__category-items ul li {
+  display: block;
+  text-transform: uppercase;
+  font-family: var(--heading-font);
+  padding: 1rem;
+  color: var(--grey-600);
+}
+
+.nav__category-items ul li:hover {
+  color: var(--green-400);
+  border-bottom: solid 2px var(--green-400);
+  cursor: pointer;
+}
+.nav__logo__container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.nav__logo__container div {
+  width: 25px;
+  height: 25px;
+  background-color: var(--green-400);
+  -webkit-mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
+  mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
+}
+.nav__purchase-section{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    align-items: center;   
+}
+.nav__purchase-section__currency{
+    display: flex;
+    align-items: center;   
+
+}
+.nav__purchase-section__currency__chevron{
+  
+  margin: 0 1rem 0 0.5rem;  
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  -webkit-mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
+  mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
+}
+
+.nav__purchase-section__cart{
+  width: 25px;
+  height: 25px;
+  background-color: black;
+  -webkit-mask: url("../../assets/cart-shopping-solid.svg") no-repeat center;
+  mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
+}
+.nav__purchase-section__currency:hover, .nav__purchase-section__cart:hover{
+    cursor: pointer;
+} 

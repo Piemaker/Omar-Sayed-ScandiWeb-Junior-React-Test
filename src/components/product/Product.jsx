@@ -5,12 +5,29 @@ export default class Product extends Component {
         super(props);
     }
   render() {
-    const { gallery, name, symbol, amount } = this.props;
+    const { gallery, name, symbol, amount, inStock } = this.props;
     return (
-      <article className="product__container">
+      <article
+        className={`product__container ${
+          inStock
+            ? ""
+            : "product__container--faded"
+        }`}
+      >
+        <div className="product__image__grid">
+          <div
+            className={`${
+              inStock
+                ? "product__image__overlay--hidden"
+                : "product__image__overlay"
+            }`}
+          >
+            Out Of Stock
+          </div>
           <div className="product__image__container">
-        <img src={gallery} alt={name} />
-              </div>
+            <img src={gallery} alt={name} />
+          </div>
+        </div>
         <div className="product__text__container">
           <p className="product__text--muted">{name}</p>
           <p>
