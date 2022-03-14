@@ -33,6 +33,7 @@ export default class App extends Component {
       loading: true,
       error: false,
       category: "all",
+      currency: { label: "USD", symbol: "$" },
     };
   }
   fetchAllData = async (categoryName) => {
@@ -52,7 +53,9 @@ export default class App extends Component {
   setCategory = (category) => {
     this.setState({ category });
   };
-
+  setCurrency = (currency) =>{
+    this.setState({currency});
+  }
   componentDidMount() {
     this.fetchAllData({ title: this.state.category });
   }
@@ -62,7 +65,7 @@ export default class App extends Component {
     }
   }
   render() {
-    const { loading, error, data } = this.state;
+    const { loading, error, data, currency, currency:{symbol} } = this.state;
     if (loading) {
       return <Loader/>
     }
@@ -76,8 +79,10 @@ export default class App extends Component {
             categories={data.categories}
             currencies={data.currencies}
             setCategory={this.setCategory}
+            setCurrency = {this.setCurrency}
+            symbol = {symbol}
           />
-          <PLP category={data.category} />
+          <PLP category={data.category} currency = {currency} />
         </ApolloProvider>
       );
     }

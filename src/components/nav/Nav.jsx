@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import "./nav.css";
+import "./CurrencyDropDown"
+import CurrencyDropDown from './CurrencyDropDown';
 export default class Nav extends Component {
   constructor(props){
     super(props)
@@ -13,7 +15,7 @@ export default class Nav extends Component {
     this.props.setCategory(clicked);
   };
   render() {
-    const { categories, currencies, setCategory } = this.props;
+    const { categories, currencies, setCurrency, symbol} = this.props;
     const {clicked} = this.state;
     // TODO use currencies in currency overlay
 
@@ -44,7 +46,8 @@ export default class Nav extends Component {
         </div>
         <div className="nav__purchase-section">
           <div className="nav__purchase-section__currency">
-            <p>$</p>
+            <p>{symbol}</p>
+            <CurrencyDropDown {...{ currencies, setCurrency }} />
             <div className="nav__purchase-section__currency__chevron"></div>
           </div>
           <div className="nav__purchase-section__cart"></div>

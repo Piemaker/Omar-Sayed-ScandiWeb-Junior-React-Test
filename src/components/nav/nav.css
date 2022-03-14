@@ -44,13 +44,37 @@
 .nav__purchase-section{
     display: flex;
     justify-content: flex-end;
-    margin-right: 1rem;
+    margin-right: 5rem;
     align-items: center;   
 }
 .nav__purchase-section__currency{
+    position: relative;
     display: flex;
     align-items: center;   
 
+}
+.nav__purchase-section__currency__dropdown{
+    position: absolute;
+    height: 0;
+    display: none;
+    min-width: 4rem;
+    margin: 0;
+    padding: 10px 5px 10px 5px;
+    top: 10px;
+    left :0;
+    list-style:none;
+    z-index: 100;
+}
+.nav__purchase-section__currency:hover .nav__purchase-section__currency__dropdown{
+    display: block !important;
+    height: auto;
+}
+.nav__purchase-section__currency__dropdown li{
+  padding : 10px 0 10px 0;
+}
+.nav__purchase-section__currency__dropdown li:hover{
+    color: var(--green-400) !important;
+  border-bottom: solid 2px var(--green-400) !important;
 }
 .nav__purchase-section__currency__chevron{
   
