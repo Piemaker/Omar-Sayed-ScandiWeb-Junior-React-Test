@@ -1,17 +1,41 @@
 import React, { Component } from 'react'
 import "./nav.css";
 export default class Nav extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      clicked : "all"
+    }
+  }
+  handleClick = (e) => {
+    const clicked = e.target.value;
+    this.setState({clicked});
+    this.props.setCategory(clicked);
+  };
   render() {
-      const { categories, currencies, setCategory } = this.props;
-      // TODO use currencies in currency overlay
+    const { categories, currencies, setCategory } = this.props;
+    const {clicked} = this.state;
+    // TODO use currencies in currency overlay
+
     return (
       <nav className="nav">
         <div className="nav__category-items">
           <ul>
-            {categories.map((category,index) =>{
-                return(
-                    <button key = {`${index}${category.name}`} value = {category.name} onClick = {function(e){setCategory(e.target.value)}}>{category.name}</button>
-                )
+            {categories.map((category, index) => {
+              return (
+                <button
+                  className={`${
+                    clicked === category.name
+                      ? "nav__category-items--clicked"
+                      : ""
+                  }`}
+                  key={`${index}${category.name}`}
+                  value={category.name}
+                  onClick={this.handleClick}
+                >
+                  {category.name}
+                </button>
+              );
             })}
           </ul>
         </div>
@@ -19,13 +43,12 @@ export default class Nav extends Component {
           <div></div>
         </div>
         <div className="nav__purchase-section">
-            <div className="nav__purchase-section__currency">
+          <div className="nav__purchase-section__currency">
             <p>$</p>
-            <div className="nav__purchase-section__currency__chevron">
-                </div>
-                </div>
-            <div className='nav__purchase-section__cart'></div>
-            </div>
+            <div className="nav__purchase-section__currency__chevron"></div>
+          </div>
+          <div className="nav__purchase-section__cart"></div>
+        </div>
       </nav>
     );
   }

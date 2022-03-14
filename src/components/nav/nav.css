@@ -20,9 +20,11 @@
 }
 
 .nav__category-items ul button:hover {
-  color: var(--green-400);
-  border-bottom: solid 2px var(--green-400);
   cursor: pointer;
+}
+.nav__category-items--clicked{
+  color: var(--green-400) !important;
+  border-bottom: solid 2px var(--green-400) !important;
 }
 .nav__logo__container {
   height: 100%;

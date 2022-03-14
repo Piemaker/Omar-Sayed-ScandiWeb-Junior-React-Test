@@ -10,9 +10,8 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import React, { Component } from "react";
-import PLP from "./components/Product-Listing-Page/PLP";
-import Nav from "./components/nav/Nav";
-import { GET_ALL_DATA, GET_PRODUCTS } from "./GraphQl/Queries";
+import { PLP, Nav, Loader } from "./components";
+import { GET_ALL_DATA } from "./GraphQl/Queries";
 
 const errorLink = onError((graphqlErrors, networkError) => {
   if (graphqlErrors) {
@@ -65,7 +64,7 @@ export default class App extends Component {
   render() {
     const { loading, error, data } = this.state;
     if (loading) {
-      return <h1>Loading...</h1>;
+      return <Loader/>
     }
     if (error) {
       return <h1>{error}</h1>;
