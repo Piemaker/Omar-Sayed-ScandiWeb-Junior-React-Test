@@ -9,12 +9,14 @@ export default class Product extends Component {
     return (
       <article
         className={`product__container ${
-          inStock
-            ? ""
-            : "product__container--faded"
+          inStock ? "" : "product__container--faded"
         }`}
       >
         <div className="product__image__grid">
+          <div className="product__image__grid__icon-container">
+          <div className="product__image__grid__add-icon"></div>
+            </div>
+
           <div
             className={`${
               inStock

@@ -1,11 +1,13 @@
 @import url("../../root.css");
 .product__container{
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
-    box-shadow: var(--shadow-2);
     border-radius: var(--borderRadius);
-    transition: all 0.5s ease;
     font-family: var(--body-font);
+    border: 0.5rem solid white;
+    transition: all 0.5s ease;
+
     
 }
 .product__container--faded{
@@ -31,7 +33,33 @@
     grid-row: 1fr;
     
 }
+.product__image__grid__icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area : 1/1;
+    place-self: end end;
+    z-index: 100;
+    border-radius: 50%;
+    background-color: var(--green-400);
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    margin-right : 0.5rem;
+    opacity: 0;
+    transition: all 0.5s ease;
+    }
+.product__image__grid__add-icon{
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  -webkit-mask: url("../../assets/cart-shopping-solid.svg") no-repeat center;
+  mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
+}
+
 .product__image__container{
+    height: 250px;
     max-height: 250px;
     grid-area : 1/1;
 
@@ -61,6 +89,9 @@ p{
 }
 .product__container:hover{
     cursor: pointer;
-    transform: scale(1.05);
     box-shadow: var(--shadow-4);
+    
+}
+.product__container:hover .product__image__grid__icon-container{
+    opacity: 1;
 }

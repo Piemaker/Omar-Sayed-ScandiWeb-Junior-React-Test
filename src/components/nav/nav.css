@@ -15,7 +15,7 @@
   border: none;
   text-transform: uppercase;
   font-family: var(--heading-font);
-  padding: 1rem;
+  padding: 0.75rem;
   color: var(--grey-600);
 }
 
@@ -43,8 +43,7 @@
 }
 .nav__purchase-section{
     display: flex;
-    justify-content: flex-end;
-    margin-right: 5rem;
+    justify-content: center;
     align-items: center;   
 }
 .nav__purchase-section__currency{
