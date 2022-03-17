@@ -1,90 +1,56 @@
+import React, { Component } from "react";
+// import {useParams}  from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
+import { Category, Error, PDP } from "./components";
 import "./normalize.css";
-import "./root.css";
 import "./app.css";
+
+// APOLLO INITIALIZATION
 import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  HttpLink,
-  from,
+    ApolloProvider,
+    ApolloClient,
+    InMemoryCache,
+    HttpLink,
+    from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import React, { Component } from "react";
-import { PLP, Nav, Loader } from "./components";
-import { GET_ALL_DATA } from "./GraphQl/Queries";
-
 const errorLink = onError((graphqlErrors, networkError) => {
-  if (graphqlErrors) {
-    graphqlErrors.forEach(({ message }) => {
-      console.error("GraphQl error", message);
+    if (graphqlErrors) {
+        graphqlErrors.forEach(({ message }) => {
+            console.error("GraphQl error", message);
     });
   }
 });
 const link = from([errorLink, new HttpLink({ uri: "http://localhost:4000" })]);
-export const client = new ApolloClient({
+export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: link,
 });
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      loading: true,
-      error: false,
-      category: "all",
-      currency: { label: "USD", symbol: "$" },
-    };
-  }
-  fetchAllData = async (categoryName) => {
-    const { data, loading, error } = await client.query({
-      query: GET_ALL_DATA,
-      variables: { categoryName },
-    });
+// END APOLLO INITIALIZATION
 
-    console.log(
-      "🚀 ~ file: PLP.jsx ~ line 25 ~ PLP ~ fetchProducts= ~ data, loading, error",
-      data,
-      loading,
-      error
-    );
-    this.setState({ data, loading, error });
-  };
-  setCategory = (category) => {
-    this.setState({ category });
-  };
-  setCurrency = (currency) =>{
-    this.setState({currency});
-  }
-  componentDidMount() {
-    this.fetchAllData({ title: this.state.category });
-  }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.category !== prevState.category) {
-      this.fetchAllData({ title: this.state.category });
-    }
-  }
+export default class App extends Component {
   render() {
-    const { loading, error, data, currency, currency:{symbol} } = this.state;
-    if (loading) {
-      return <Loader/>
-    }
-    if (error) {
-      return <h1>{error}</h1>;
-    }
-    if (data) {
-      return (
-        <ApolloProvider client={client}>
-          <Nav
-            categories={data.categories}
-            currencies={data.currencies}
-            setCategory={this.setCategory}
-            setCurrency = {this.setCurrency}
-            symbol = {symbol}
-          />
-          <PLP category={data.category} currency = {currency} />
-        </ApolloProvider>
-      );
-    }
+    //    const Wrapper = (props) => {
+    //      const {id} = useParams();
+    //      return (
+    //        <PDP id = {id}
+    //        />
+    //      );
+    //    };
+    // ! NEED TO USE A WRAPPER WITH USEPARAMS IF REACT-ROUTER V6 IS USED
+    return (
+      <ApolloProvider client={apolloClient}>
+        <Router>
+          <Switch>
+            <Route exact path="/" children={<Category />} />
+            <Route
+              path="/product/:id"
+              render={(props) => <PDP id={props.match.params.id} />}
+            />
+            <Route path="*" children={<Error />} />
+          </Switch>
+        </Router>
+      </ApolloProvider>
+    );
   }
 }

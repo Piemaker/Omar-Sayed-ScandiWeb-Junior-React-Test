@@ -10,7 +10,6 @@ export default class PLP extends Component {
           <h2 className="category-title">{category.name}</h2>
           <section className="grid-container">
             {category.products.map((product) => {
-              // TODO change prices according to user selection
               const price = product.prices.find(price => price.currency.symbol === currency.symbol );
               const {
                 amount,
@@ -22,7 +21,7 @@ export default class PLP extends Component {
               return (
                 <Product
                   key={id}
-                  {...{ name, amount, symbol, gallery, inStock }}
+                  {...{ name, amount, symbol, gallery, inStock, id }}
                 />
               );
             })}

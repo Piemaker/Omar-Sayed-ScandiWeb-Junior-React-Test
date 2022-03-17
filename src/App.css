@@ -5,3 +5,7 @@ body{
     margin : 0 auto;
     font-family: var(--body-font);
 }
+a {
+    text-decoration: none;
+    color : inherit;
+} 
