@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 // import {useParams}  from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
-import { Category, Error, PDP } from "./components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Category, Error, Nav, PDP } from "./components";
+import ProductContext from "./ProductContext";
 import "./normalize.css";
 import "./app.css";
 
@@ -28,28 +29,42 @@ export const apolloClient = new ApolloClient({
 });
 // END APOLLO INITIALIZATION
 
+
+
+
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      category: "all",
+      currency: { label: "USD", symbol: "$" },
+    };
+  }
+  setCategory = (category) => {
+    this.setState({ category });
+  };
+  setCurrency = (currency) => {
+    this.setState({ currency });
+  };
   render() {
-    //    const Wrapper = (props) => {
-    //      const {id} = useParams();
-    //      return (
-    //        <PDP id = {id}
-    //        />
-    //      );
-    //    };
-    // ! NEED TO USE A WRAPPER WITH USEPARAMS IF REACT-ROUTER V6 IS USED
+    const {category, currency} = this.state;
+    const {setCategory, setCurrency} = this; //* can't use this inside {}
     return (
       <ApolloProvider client={apolloClient}>
+        <ProductContext.Provider value = {{category,currency ,setCategory,setCurrency}}>
+
         <Router>
+            <Nav/>
           <Switch>
             <Route exact path="/" children={<Category />} />
             <Route
               path="/product/:id"
               render={(props) => <PDP id={props.match.params.id} />}
-            />
+              />
             <Route path="*" children={<Error />} />
           </Switch>
         </Router>
+              </ProductContext.Provider>
       </ApolloProvider>
     );
   }

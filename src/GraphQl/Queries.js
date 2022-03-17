@@ -9,9 +9,9 @@ export const GET_CATEGORIES_NAME = gql`
 `;
 // TODO fetch data based on category selection
 
-export const GET_PRODUCTS = gql`
-  query {
-    category(input: { title: "all" }) {
+export const GET_CATEGORY = gql`
+  query categoryFilter($category: CategoryInput) {
+    category(input: $category) {
       name
       products {
         id

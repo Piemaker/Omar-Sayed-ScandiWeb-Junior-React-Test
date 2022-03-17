@@ -1,8 +1,8 @@
-
 import React, { Component } from "react";
-import { PLP, Nav, Loader } from "..";
+import { PLP, Loader } from "..";
 import { apolloClient } from "../../App";
-import { GET_ALL_DATA } from "../../GraphQl/Queries";
+import { GET_CATEGORY } from "../../GraphQl/Queries";
+import ProductContext from "../../ProductContext";
 
 export default class Category extends Component {
   constructor(props) {
@@ -12,58 +12,41 @@ export default class Category extends Component {
       loading: true,
       error: false,
       category: "all",
-      currency: { label: "USD", symbol: "$" },
     };
   }
-  fetchAllData = async (categoryName) => {
+  // FUNCTIONS
+
+  fetchCategory = async (category) => {
     const { data, loading, error } = await apolloClient.query({
-      query: GET_ALL_DATA,
-      variables: { categoryName },
+      query: GET_CATEGORY,
+      variables: { category },
     });
 
-    console.log(
-      "🚀 ~ file: PLP.jsx ~ line 25 ~ PLP ~ fetchProducts= ~ data, loading, error",
-      data,
-      loading,
-      error
-    );
-    this.setState({ data, loading, error });
+    this.setState({ data, loading, error, category: this.context.category });
   };
-  setCategory = (category) => {
-    this.setState({ category });
-  };
-  setCurrency = (currency) =>{
-    this.setState({currency});
-  }
+
+  // LIFE CYCLES
+   
   componentDidMount() {
-    this.fetchAllData({ title: this.state.category });
+    this.fetchCategory({ title: this.context.category });
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.category !== prevState.category) {
-      this.fetchAllData({ title: this.state.category });
+    if (this.context.category !== this.state.category) {
+      this.fetchCategory({ title: this.context.category });
     }
   }
   render() {
-    const { loading, error, data, currency, currency:{symbol} } = this.state;
+    const { currency } = this.context;
+    const { loading, error, data } = this.state;
     if (loading) {
-      return <Loader/>
+      return <Loader />;
     }
     if (error) {
       return <h1>{error}</h1>;
     }
     if (data) {
-      return (
-      <>
-          <Nav
-            categories={data.categories}
-            currencies={data.currencies}
-            setCategory={this.setCategory}
-            setCurrency = {this.setCurrency}
-            symbol = {symbol}
-          />
-          <PLP category={data.category} currency = {currency} />
-      </>
-      );
+      return <PLP category={data.category} currency={currency} />;
     }
   }
 }
+Category.contextType = ProductContext;
