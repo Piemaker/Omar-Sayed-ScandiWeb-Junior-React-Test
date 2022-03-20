@@ -1,0 +1,26 @@
+@import url("../../root.css");
+.text-box{
+    display: flex;
+    border: black solid 1px;
+    flex : 1;
+    height: clamp(0.3rem, 7.5vh, 2rem);
+    font-size: clamp(0.25rem, 4vw, 1rem);
+}
+.text-box input+label:hover{
+    cursor: pointer;
+}
+
+.text-box input{
+   visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.text-box label {
+    text-align: center;
+    flex: 1;
+    padding: 0.125rem;
+}
+.text-box input:checked + label{
+    background: black;
+    color: white;
+}
