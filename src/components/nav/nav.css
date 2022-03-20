@@ -1,7 +1,9 @@
 .nav {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: repeat(3, auto);
   margin: 1rem 0 1rem 0;
+  font-size: clamp(0.5rem, 3vw, 1rem);
+
 }
 .nav__category-items ul {
   display: flex;
@@ -15,7 +17,7 @@
   border: none;
   text-transform: uppercase;
   font-family: var(--heading-font);
-  padding: 0.75rem;
+  padding: 0.5rem;
   color: var(--grey-600);
 }
 
@@ -35,8 +37,8 @@
 
 }
 .nav__logo__container div {
-  width: 25px;
-  height: 25px;
+  width: clamp(15px, 4vw, 25px);
+  height: clamp(15px, 4vw, 25px);
   background-color: var(--green-400);
   -webkit-mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
   mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
@@ -87,11 +89,12 @@
 }
 
 .nav__purchase-section__cart{
-  width: 25px;
-  height: 25px;
+  width: clamp(15px, 4vw, 25px);
+  height: clamp(15px, 4vw, 25px);
+
   background-color: black;
   -webkit-mask: url("../../assets/cart-shopping-solid.svg") no-repeat center;
-  mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
+  mask: url("../../assets/cart-shopping-solid.svg") no-repeat center;
 }
 .nav__purchase-section__currency:hover, .nav__purchase-section__cart:hover{
     cursor: pointer;

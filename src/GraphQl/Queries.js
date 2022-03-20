@@ -7,7 +7,6 @@ export const GET_CATEGORIES_NAME = gql`
     }
   }
 `;
-// TODO fetch data based on category selection
 
 export const GET_CATEGORY = gql`
   query categoryFilter($category: CategoryInput) {
@@ -42,7 +41,7 @@ export const GET_CATEGORIES_AND_CURRENCIES = gql`
   }
 `;
 export const GET_ALL_DATA = gql`
-  query categoryFilter($categoryName: CategoryInput ){
+  query categoryFilter($categoryName: CategoryInput) {
     categories {
       name
     }
@@ -50,7 +49,7 @@ export const GET_ALL_DATA = gql`
       label
       symbol
     }
-    category(input: $categoryName ) {
+    category(input: $categoryName) {
       name
       products {
         id
@@ -65,6 +64,37 @@ export const GET_ALL_DATA = gql`
         inStock
         gallery
       }
+    }
+  }
+`;
+
+export const GET_PRODUCT = gql`
+  query productFilter($productId: String!) {
+    product(id: $productId) {
+      id
+      name
+      inStock
+      gallery
+      description
+      category
+      attributes {
+        id
+        name
+        type
+        items {
+          displayValue
+          value
+          id
+        }
+      }
+      prices {
+        amount
+        currency {
+          label
+          symbol
+        }
+      }
+      brand
     }
   }
 `;

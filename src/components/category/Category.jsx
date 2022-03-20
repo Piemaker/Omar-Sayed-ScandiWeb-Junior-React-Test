@@ -25,8 +25,7 @@ export default class Category extends Component {
     this.setState({ data, loading, error, category: this.context.category });
   };
 
-  // LIFE CYCLES
-   
+  // LIFE CYCLES 
   componentDidMount() {
     this.fetchCategory({ title: this.context.category });
   }

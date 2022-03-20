@@ -8,17 +8,17 @@ import "./app.css";
 
 // APOLLO INITIALIZATION
 import {
-    ApolloProvider,
-    ApolloClient,
-    InMemoryCache,
-    HttpLink,
-    from,
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  HttpLink,
+  from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 const errorLink = onError((graphqlErrors, networkError) => {
-    if (graphqlErrors) {
-        graphqlErrors.forEach(({ message }) => {
-            console.error("GraphQl error", message);
+  if (graphqlErrors) {
+    graphqlErrors.forEach(({ message }) => {
+      console.error("GraphQl error", message);
     });
   }
 });
@@ -28,9 +28,6 @@ export const apolloClient = new ApolloClient({
   link: link,
 });
 // END APOLLO INITIALIZATION
-
-
-
 
 export default class App extends Component {
   constructor(props) {
@@ -47,24 +44,25 @@ export default class App extends Component {
     this.setState({ currency });
   };
   render() {
-    const {category, currency} = this.state;
-    const {setCategory, setCurrency} = this; //* can't use this inside {}
+    const { category, currency } = this.state;
+    const { setCategory, setCurrency } = this; //* can't use this inside {}
     return (
       <ApolloProvider client={apolloClient}>
-        <ProductContext.Provider value = {{category,currency ,setCategory,setCurrency}}>
-
-        <Router>
-            <Nav/>
-          <Switch>
-            <Route exact path="/" children={<Category />} />
-            <Route
-              path="/product/:id"
-              render={(props) => <PDP id={props.match.params.id} />}
+        <ProductContext.Provider
+          value={{ category, currency, setCategory, setCurrency }}
+        >
+          <Router>
+            <Nav />
+            <Switch>
+              <Route exact path="/" children={<Category />} />
+              <Route
+                path="/product/:id"
+                render={(props) => <PDP id={props.match.params.id} />}
               />
-            <Route path="*" children={<Error />} />
-          </Switch>
-        </Router>
-              </ProductContext.Provider>
+              <Route path="*" children={<Error />} />
+            </Switch>
+          </Router>
+        </ProductContext.Provider>
       </ApolloProvider>
     );
   }

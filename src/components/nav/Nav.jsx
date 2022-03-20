@@ -6,6 +6,7 @@ import { GET_CATEGORIES_AND_CURRENCIES } from "../../GraphQl/Queries";
 import { apolloClient } from "../../App";
 import ProductContext from "../../ProductContext";
 import Loader from "../loader/Loader";
+import { Link } from "react-router-dom";
 export default class Nav extends Component {
   constructor(props) {
     super(props);
@@ -70,9 +71,11 @@ export default class Nav extends Component {
               })}
             </ul>
           </div>
+          <Link to = "/">
           <div className="nav__logo__container">
             <div></div>
           </div>
+          </Link>
           <div className="nav__purchase-section">
             <div className="nav__purchase-section__currency">
               <p>{symbol}</p>

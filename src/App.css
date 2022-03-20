@@ -1,11 +1,21 @@
 @import "./root.css";
 body{
+    padding: 1rem;
     max-width: var(--maxContainerWidth);
-    padding: 2rem;
     margin : 0 auto;
     font-family: var(--body-font);
+    background: var(--grey-50);
+    font-weight: 400;
+    line-height: 1.75;
 }
 a {
     text-decoration: none;
     color : inherit;
 } 
+
+@media only screen and (min-width: 600px) {
+body{
+
+    padding: 2rem;
+}
+}
