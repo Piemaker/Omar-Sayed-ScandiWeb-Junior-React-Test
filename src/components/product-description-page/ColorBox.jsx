@@ -1,12 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import "./colorBox.css";
 export default class ColorBox extends Component {
   render() {
-    const { color} = this.props;
+    const { name, color, handleChecked } = this.props;
     return (
       <div className="color-box">
-        <input type="radio" name="color-attribute" id={color} />
-        <label htmlFor={color} style = {{background : color}}></label>
+        <input
+          type="radio"
+          name={name}
+          id={color}
+          value={color}
+          onClick={handleChecked}
+        />
+        <label htmlFor={color} style={{ background: color }}></label>
       </div>
     );
   }

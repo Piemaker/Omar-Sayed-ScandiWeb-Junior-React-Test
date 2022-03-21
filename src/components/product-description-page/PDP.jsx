@@ -9,10 +9,13 @@ import TextBox from "./TextBox";
 export default class PDP extends Component {
   constructor(props) {
     super(props);
+    this.imgRef = React.createRef();
     this.state = {
       data: [],
       loading: true,
       error: "",
+      imgSrc: "",
+      selectedAttributes: [],
     };
   }
   // FUNCTIONS
@@ -25,15 +28,32 @@ export default class PDP extends Component {
       "🚀 ~ file: PDP.jsx ~ line 20 ~ PDP ~ fetchProduct= ~ data",
       data
     );
-
+    const {
+      product: { gallery },
+    } = data;
     this.setState({ data, loading, error });
+    this.setState({ imgSrc: gallery[0] });
+  };
+  handleClick = (e) => {
+    this.setState({ imgSrc: e.target.src });
+  };
+  handleChecked = (e) => {
+    if(e.target.checked){
+      const { name, value } = e.target;
+      const { selectedAttributes } = this.state;
+      const changedAttributes = selectedAttributes.filter(
+        (attr) => !attr.hasOwnProperty(name)
+      );
+      changedAttributes.push({[name] : value})
+      this.setState({ selectedAttributes: changedAttributes });
+    }
   };
   // LIFE CYCLES
   componentDidMount() {
     const { id } = this.props;
     this.fetchProduct(id);
   }
-  // TODO carousel for gallery items, store selected item attribute in context for cart usage
+  // TODO store selected item attribute in context for cart usage, add default state value for no selection
   render() {
     const { data, loading, error } = this.state;
     if (loading) {
@@ -43,21 +63,31 @@ export default class PDP extends Component {
       return <h1>{error}</h1>;
     }
     if (data.length !== 0) {
-      const {currency: { symbol }} = this.context;
+      const {
+        currency: { symbol },
+      } = this.context;
       const { attributes, brand, description, gallery, name, prices } =
         data.product;
-        const price = prices.find(price => price.currency.symbol === symbol);
+      const price = prices.find((price) => price.currency.symbol === symbol);
       return (
         <article className="product-grid-container">
           <div className="product__gallery-container">
             {gallery.map((photo, index) => {
-              return <img key={index} src={photo} />;
+              return (
+                <img
+                  key={index}
+                  src={photo}
+                  alt={brand}
+                  onClick={this.handleClick}
+                />
+              );
             })}
           </div>
           <div className="product__selected-photo-container">
             <img
+              ref={this.imgRef}
               className="product__selected-photo-container-img"
-              src={gallery[0]}
+              src={this.state.imgSrc}
               alt={name}
             />
           </div>
@@ -74,9 +104,23 @@ export default class PDP extends Component {
                     <div className="product__details-container__attributes-container">
                       {attribute.items.map((item) => {
                         if (attribute.type === "swatch") {
-                          return <ColorBox key={item.id} color={item.value} />;
+                          return (
+                            <ColorBox
+                              key={item.id}
+                              color={item.value}
+                              name={attribute.name}
+                              handleChecked={this.handleChecked}
+                            />
+                          );
                         }
-                        return <TextBox key={item.id} text={item.value} />;
+                        return (
+                          <TextBox
+                            key={item.id}
+                            text={item.value}
+                            name={attribute.name}
+                            handleChecked={this.handleChecked}
+                          />
+                        );
                       })}
                     </div>
                   </div>
@@ -94,7 +138,7 @@ export default class PDP extends Component {
               <button>add to cart</button>
             </div>
             <div
-              dangerouslySetInnerHTML={{ __html : description} }
+              dangerouslySetInnerHTML={{ __html: description }}
               className="product__details-container__description"
             ></div>
           </div>
