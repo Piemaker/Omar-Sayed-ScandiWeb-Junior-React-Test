@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { apolloClient } from "../../App";
 import { GET_PRODUCT } from "../../GraphQl/Queries";
 import ProductContext from "../../ProductContext";
+import AddedDialog from "../dialog/AddedDialog";
 import Loader from "../loader/Loader";
 import ColorBox from "./ColorBox";
 import "./pdp.css";
@@ -9,13 +10,13 @@ import TextBox from "./TextBox";
 export default class PDP extends Component {
   constructor(props) {
     super(props);
-    this.imgRef = React.createRef();
     this.state = {
       data: [],
       loading: true,
       error: "",
       imgSrc: "",
       selectedAttributes: [],
+      showDialog : false,
     };
   }
   // FUNCTIONS
@@ -59,14 +60,19 @@ export default class PDP extends Component {
       selectedAttributes,
       quantity: 1,
     });
+    this.setState({showDialog : true})
   };
+  closeDialog = ()=>{
+    this.setState({showDialog : false});
+  }
   // LIFE CYCLES
   componentDidMount() {
     const { id } = this.props;
     this.fetchProduct(id);
   }
   render() {
-    const { data, loading, error } = this.state;
+    const { data, loading, error, showDialog } = this.state;
+    const {closeDialog} = this;
     if (loading) {
       return <Loader />;
     }
@@ -96,13 +102,13 @@ export default class PDP extends Component {
           </div>
           <div className="product__selected-photo-container">
             <img
-              ref={this.imgRef}
               className="product__selected-photo-container-img"
               src={this.state.imgSrc}
               alt={name}
             />
           </div>
           <form
+            method="dialog"
             onSubmit={this.handleSubmit}
             className="product__details-container"
           >
@@ -155,6 +161,7 @@ export default class PDP extends Component {
               dangerouslySetInnerHTML={{ __html: description }}
               className="product__details-container__description"
             ></div>
+            <AddedDialog showDialog = {showDialog} closeDialog = {closeDialog} />
           </form>
         </article>
       );

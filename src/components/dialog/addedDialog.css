@@ -1,0 +1,25 @@
+@import url("../../root.css");
+.dialog{
+    border : 2px solid var(--primary-500);
+    box-shadow: var(--shadow-4);
+    color :var(--green-500);
+    text-transform: capitalize;
+    border-radius: var(--borderRadius);
+  font-size: clamp(0.5rem, 3vw, 1rem);
+
+}
+.dialog::backdrop{
+  background: rgb(38,186,204);
+background: linear-gradient(270deg, rgba(38,186,204,0.15) 50%, rgba(0,255,16,0.15) 100%);
+}
+.dialog__container{
+  display: flex;
+  gap: 0.25rem;
+}
+  .dialog__icon {
+  width: clamp(15px, 4vw, 25px);
+  height: clamp(15px, 4vw, 25px);
+  background-color: var(--green-400);
+  -webkit-mask: url("../../assets/circle-check-solid.svg") no-repeat center;
+  mask: url("../../assets/circle-check-solid.svg") no-repeat center;
+}

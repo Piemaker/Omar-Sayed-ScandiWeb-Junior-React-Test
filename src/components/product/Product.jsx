@@ -1,38 +1,53 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProductContext from "../../ProductContext";
+import AddedDialog from "../dialog/AddedDialog";
 import "./product.css";
 export default class Product extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showDialog: false,
+    };
+  }
   // FUNCTIONS
-  handleClick = (e)=>{
-    e.preventDefault()
-    const {setCart} = this.context;
+  handleClick = (e) => {
+    e.preventDefault();
+    const { setCart } = this.context;
     const { id, name, brand, prices, attributes, gallery } = this.props;
     // SELECT FIRST ATTRIBUTE AS DEFAULT
-    const selectedAttributes = attributes.map(attr =>{
-      const {id} = attr;
+    const selectedAttributes = attributes.map((attr) => {
+      const { id } = attr;
       return { [id]: attr.items[0].value };
-    })
-     setCart({
-       id,
-       name,
-       brand,
-       prices,
-       attributes,
-       gallery,
-       selectedAttributes,
-       quantity: 1,
-     });
-  }
+    });
+    setCart({
+      id,
+      name,
+      brand,
+      prices,
+      attributes,
+      gallery,
+      selectedAttributes,
+      quantity: 1,
+    });
+    this.setState({showDialog : true})
+  };
+
+  closeDialog = () => {
+    this.setState({ showDialog: false });
+  };
 
   // LIFE CYCLES
   render() {
-
     const { gallery, name, inStock, id, prices } = this.props;
     const { getPriceBasedOnCurrency } = this.context;
-              const price = getPriceBasedOnCurrency(prices);
-              const {currency : {symbol} , amount} = price;
-
+    const price = getPriceBasedOnCurrency(prices);
+    const {
+      currency: { symbol },
+      amount,
+    } = price;
+   const {closeDialog} = this;
+   const {showDialog} = this.state;
     return (
       <Link to={`/product/${id}`}>
         <article
@@ -69,6 +84,7 @@ export default class Product extends Component {
             </p>
           </div>
         </article>
+        <AddedDialog showDialog={showDialog} closeDialog={closeDialog} />
       </Link>
     );
   }
