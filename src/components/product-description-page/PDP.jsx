@@ -38,20 +38,31 @@ export default class PDP extends Component {
     this.setState({ imgSrc: e.target.src });
   };
   handleChecked = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       const { name, value } = e.target;
       const { selectedAttributes } = this.state;
       const changedAttributes = selectedAttributes.filter(
         (attr) => !attr.hasOwnProperty(name)
       );
-      changedAttributes.push({[name] : value})
+      changedAttributes.push({ [name]: value });
       this.setState({ selectedAttributes: changedAttributes });
     }
+  };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
   };
   // LIFE CYCLES
   componentDidMount() {
     const { id } = this.props;
     this.fetchProduct(id);
+  }
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ hasError: true });
+    // You can also log the error to an error reporting service
+    console.log("🚀 ~ file: PDP.jsx ~ line 66 ~ PDP ~ componentDidCatch ~ error, info", error, info)
+    
   }
   // TODO store selected item attribute in context for cart usage, add default state value for no selection
   render() {
@@ -91,7 +102,10 @@ export default class PDP extends Component {
               alt={name}
             />
           </div>
-          <div className="product__details-container">
+          <form
+            onSubmit={this.handleSubmit}
+            className="product__details-container"
+          >
             <div className="product__details-container__title">
               <h2>{brand}</h2>
               <p>{name}</p>
@@ -135,13 +149,13 @@ export default class PDP extends Component {
               </p>
             </div>
             <div className="product__details-container__call-to-action">
-              <button>add to cart</button>
+              <button type="submit">add to cart</button>
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: description }}
               className="product__details-container__description"
             ></div>
-          </div>
+          </form>
         </article>
       );
     }

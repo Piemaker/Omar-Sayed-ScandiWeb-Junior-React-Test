@@ -4,15 +4,18 @@ export default class TextBox extends Component {
   render() {
     const {text,name, handleChecked } = this.props;
     return (
-      <div className="text-box">
+      <div className='text-box__container'>
         <input
           type="radio"
           name={name}
           id={`${name}-${text}`}
           value={text}
           onClick={handleChecked}
+          required
         />
-        <label htmlFor={`${name}-${text}`}>{text}</label>
+        <div className="text-box__label">
+          <label htmlFor={`${name}-${text}`}>{text}</label>
+        </div>
       </div>
     );
   }

@@ -1,26 +1,33 @@
 @import url("../../root.css");
-.text-box{
+.text-box__container{
     display: flex;
-    border: black solid 1px;
     flex : 1;
+}
+.text-box__label{
+    display: flex;
+    flex : 1;
+    border: black solid 1px;
     height: clamp(0.3rem, 7.5vh, 2rem);
     font-size: clamp(0.25rem, 4vw, 1rem);
 }
-.text-box input+label:hover{
+.text-box__container input+ .text-box__label label:hover{
     cursor: pointer;
 }
 
-.text-box input{
-   visibility: hidden;
-    width: 0;
-    height: 0;
+.text-box__container input{
+    display: hidden;
+    width: 1px; 
+    height: 1px;
+    /* has to have width in order for validation to work */
+    
+    
 }
-.text-box label {
+.text-box__label label {
     text-align: center;
     flex: 1;
     padding: 0.125rem;
 }
-.text-box input:checked + label{
+.text-box__container input:checked + .text-box__label label{
     background: black;
     color: white;
 }
