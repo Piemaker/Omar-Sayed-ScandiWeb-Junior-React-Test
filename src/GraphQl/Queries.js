@@ -24,6 +24,17 @@ export const GET_CATEGORY = gql`
         }
         inStock
         gallery
+        brand
+        attributes {
+          id
+          name
+          type
+          items {
+            displayValue
+            value
+            id
+          }
+        }
       }
     }
   }

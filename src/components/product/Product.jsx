@@ -1,9 +1,38 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ProductContext from "../../ProductContext";
 import "./product.css";
 export default class Product extends Component {
+  // FUNCTIONS
+  handleClick = (e)=>{
+    e.preventDefault()
+    const {setCart} = this.context;
+    const { id, name, brand, prices, attributes, gallery } = this.props;
+    // SELECT FIRST ATTRIBUTE AS DEFAULT
+    const selectedAttributes = attributes.map(attr =>{
+      const {id} = attr;
+      return { [id]: attr.items[0].value };
+    })
+     setCart({
+       id,
+       name,
+       brand,
+       prices,
+       attributes,
+       gallery,
+       selectedAttributes,
+       quantity: 1,
+     });
+  }
+
+  // LIFE CYCLES
   render() {
-    const { gallery, name, symbol, amount, inStock, id } = this.props;
+
+    const { gallery, name, inStock, id, prices } = this.props;
+    const { getPriceBasedOnCurrency } = this.context;
+              const price = getPriceBasedOnCurrency(prices);
+              const {currency : {symbol} , amount} = price;
+
     return (
       <Link to={`/product/${id}`}>
         <article
@@ -13,7 +42,10 @@ export default class Product extends Component {
         >
           <div className="product__image__grid">
             <div className="product__image__grid__icon-container">
-              <div className="product__image__grid__add-icon"></div>
+              <div
+                className="product__image__grid__add-icon"
+                onClick={this.handleClick}
+              ></div>
             </div>
 
             <div
@@ -41,3 +73,4 @@ export default class Product extends Component {
     );
   }
 }
+Product.contextType = ProductContext

@@ -35,7 +35,6 @@ export default class Category extends Component {
     }
   }
   render() {
-    const { currency } = this.context;
     const { loading, error, data } = this.state;
     if (loading) {
       return <Loader />;
@@ -44,7 +43,7 @@ export default class Category extends Component {
       return <h1>{error}</h1>;
     }
     if (data) {
-      return <PLP category={data.category} currency={currency} />;
+      return <PLP category={data.category} />;
     }
   }
 }

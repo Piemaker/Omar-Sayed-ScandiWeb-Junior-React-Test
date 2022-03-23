@@ -24,10 +24,6 @@ export default class PDP extends Component {
       query: GET_PRODUCT,
       variables: { productId },
     });
-    console.log(
-      "🚀 ~ file: PDP.jsx ~ line 20 ~ PDP ~ fetchProduct= ~ data",
-      data
-    );
     const {
       product: { gallery },
     } = data;
@@ -49,22 +45,26 @@ export default class PDP extends Component {
     }
   };
   handleSubmit = (e) => {
+    const { setCart } = this.context;
     e.preventDefault();
-    console.log(e);
+    const { selectedAttributes, data } = this.state;
+    const { id, name, brand, prices, attributes, gallery } = data.product;
+    setCart({
+      id,
+      name,
+      brand,
+      prices,
+      attributes,
+      gallery,
+      selectedAttributes,
+      quantity: 1,
+    });
   };
   // LIFE CYCLES
   componentDidMount() {
     const { id } = this.props;
     this.fetchProduct(id);
   }
-  componentDidCatch(error, info) {
-    // Display fallback UI
-    this.setState({ hasError: true });
-    // You can also log the error to an error reporting service
-    console.log("🚀 ~ file: PDP.jsx ~ line 66 ~ PDP ~ componentDidCatch ~ error, info", error, info)
-    
-  }
-  // TODO store selected item attribute in context for cart usage, add default state value for no selection
   render() {
     const { data, loading, error } = this.state;
     if (loading) {
@@ -75,11 +75,11 @@ export default class PDP extends Component {
     }
     if (data.length !== 0) {
       const {
-        currency: { symbol },
+        getPriceBasedOnCurrency
       } = this.context;
       const { attributes, brand, description, gallery, name, prices } =
         data.product;
-      const price = prices.find((price) => price.currency.symbol === symbol);
+      const price = getPriceBasedOnCurrency(prices);
       return (
         <article className="product-grid-container">
           <div className="product__gallery-container">

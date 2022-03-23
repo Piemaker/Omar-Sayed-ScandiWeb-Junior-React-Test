@@ -35,21 +35,60 @@ export default class App extends Component {
     this.state = {
       category: "all",
       currency: { label: "USD", symbol: "$" },
+      cart : {}
     };
   }
+  // FUNCTIONS
   setCategory = (category) => {
     this.setState({ category });
   };
   setCurrency = (currency) => {
     this.setState({ currency });
   };
+  createCartId = (productAttributeArray) =>{
+    return JSON.stringify(productAttributeArray);
+  }
+  getPriceBasedOnCurrency = (prices) =>{
+    return prices.find((price) => price.currency.symbol === this.state.currency.symbol);
+  }
+  setCart = (productObj)=>{
+    console.log(productObj)
+     const {
+       id,
+       selectedAttributes,
+     } = productObj;
+     const productCartId = this.createCartId(selectedAttributes);
+      const {cart} = this.state;
+      if(cart.hasOwnProperty(id)){
+        if(cart[id].hasOwnProperty(productCartId)){
+          cart[id][productCartId].quantity++;
+        }
+        else{
+        cart[id][productCartId] = productObj;
+        }
+      }
+      else{
+        cart[id] = {};
+        cart[id][productCartId] = productObj;
+      }
+      this.setState({cart})
+      console.log("🚀 ~ file: App.jsx ~ line 72 ~ App ~ cart", cart)
+  }
+  // LIFE CYCLES
   render() {
     const { category, currency } = this.state;
-    const { setCategory, setCurrency } = this; //* can't use this inside {}
+    const { setCategory, setCurrency, setCart, getPriceBasedOnCurrency } = this; //* can't use this inside {}
     return (
       <ApolloProvider client={apolloClient}>
         <ProductContext.Provider
-          value={{ category, currency, setCategory, setCurrency }}
+          value={{
+            category,
+            currency,
+            setCategory,
+            setCurrency,
+            setCart,
+            getPriceBasedOnCurrency,
+          }}
         >
           <Router>
             <Nav />
