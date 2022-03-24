@@ -1,0 +1,32 @@
+@import url("../../root.css");
+.description{
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(0.25rem, 4vw, 0.75rem);
+}
+.description__header{
+    font-size: clamp(0.25rem, 4vw, 0.75rem);
+    font-weight: 400;
+    color: var(--grey-800);
+    margin: 0;
+}
+.description__currency{
+    padding: 0;
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+.description__attributes-container{
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.25rem;
+}
+.description__attributes{
+    border: 1.75px solid black;
+    flex: 1;
+    text-align: center;    
+}
+.description__attributes--muted{
+    border: 1.75px solid var(--grey-400);
+    color: var(--grey-400);
+}
+

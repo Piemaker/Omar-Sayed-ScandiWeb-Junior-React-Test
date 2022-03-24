@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import {useParams}  from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Category, Error, Nav, PDP } from "./components";
+import { Cart, Category, Error, Nav, PDP } from "./components";
 import ProductContext from "./ProductContext";
 import "./normalize.css";
 import "./app.css";
@@ -98,6 +98,7 @@ export default class App extends Component {
                 path="/product/:id"
                 render={(props) => <PDP id={props.match.params.id} />}
               />
+              <Route path="/cart" children={<Cart />} />
               <Route path="*" children={<Error />} />
             </Switch>
           </Router>

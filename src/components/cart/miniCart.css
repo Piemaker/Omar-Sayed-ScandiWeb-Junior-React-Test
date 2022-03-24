@@ -1,0 +1,25 @@
+.mini-cart {
+  min-width: 175px;
+  max-width: 250px;
+  background-color: aqua;
+  padding: 1rem;
+}
+.mini-cart__header {
+    font-size: clamp(0.25rem, 4vw, 0.75rem);
+    text-transform: capitalize;
+    font-weight: 200;
+}
+.mini-cart__header span {
+ font-weight: 700;
+}
+
+.mini-cart__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+}
+.mini-cart__gallery{
+    display: flex;
+    gap: 0.5rem;
+}

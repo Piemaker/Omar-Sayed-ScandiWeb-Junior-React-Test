@@ -1,0 +1,17 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.counter__button {
+  border: 1.75px solid black;
+  text-align: center;
+  min-width: 1rem;
+
+}
+.counter__button:hover {
+    cursor: pointer;
+}
+.counter__value {
+  text-align: center;
+}
