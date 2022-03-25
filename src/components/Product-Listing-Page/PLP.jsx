@@ -11,7 +11,7 @@ export default class PLP extends Component {
           <section className="grid-container">
             {category.products.map((product) => {
               const gallery = product.gallery;
-              const { name, id, inStock, brand, attributes,prices } = product;
+              const { name, id, inStock, brand, attributes, prices } = product;
 
               return (
                 <Product

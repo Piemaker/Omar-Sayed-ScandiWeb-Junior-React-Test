@@ -48,6 +48,7 @@ export default class Product extends Component {
     } = price;
    const {closeDialog} = this;
    const {showDialog} = this.state;
+
     return (
       <Link to={`/product/${id}`}>
         <article
@@ -89,4 +90,5 @@ export default class Product extends Component {
     );
   }
 }
+
 Product.contextType = ProductContext

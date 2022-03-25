@@ -9,11 +9,12 @@
   
 }
 .product__selected-photo-container {
-  max-height: 70vh;
+  max-height: 600px;
 }
 .product__selected-photo-container-img {
   width: 100%;
-  object-fit: scale-down;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .product__details-container,
@@ -82,11 +83,13 @@ ul{
 @media only screen and (min-width: 600px) {
   .product-grid-container {
     grid-template-columns: 2fr 6fr 4fr;
+    grid-template-rows: auto;
     grid-column-gap: 16px;
     gap : 1rem;
   }
 .product__gallery-container {
     flex-direction: column;
+    flex-wrap : nowrap;
 }
 .product__gallery-container img {
   flex : 0;
