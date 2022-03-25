@@ -10,7 +10,7 @@ export default class PLP extends Component {
           <h2 className="category-title">{category.name}</h2>
           <section className="grid-container">
             {category.products.map((product) => {
-              const gallery = product.gallery[0];
+              const gallery = product.gallery;
               const { name, id, inStock, brand, attributes,prices } = product;
 
               return (

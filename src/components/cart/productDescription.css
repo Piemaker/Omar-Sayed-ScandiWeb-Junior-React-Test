@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     font-size: clamp(0.25rem, 4vw, 0.75rem);
+    justify-content: space-around;
 }
 .description__header{
     font-size: clamp(0.25rem, 4vw, 0.75rem);
@@ -16,15 +17,30 @@
     margin-top: 0.25rem;
 }
 .description__attributes-container{
-    margin-top: 0.5rem;
+    font-size: clamp(0.15rem, 4vw, 0.5rem);
     display: flex;
+    flex-wrap: wrap;
     gap: 0.25rem;
+    margin-top: 0.5rem;
 }
 .description__attributes{
     border: 1.75px solid black;
     flex: 1;
     text-align: center;    
 }
+.description__attributes__color{
+  height: clamp(0.3rem, 7.5vh, 1rem);
+
+}
+.description__attributes__color--selected{
+    transform: scale(1.1);
+}
+
+.description__attributes--selected{
+    background-color: black;
+    color : white;
+}
+
 .description__attributes--muted{
     border: 1.75px solid var(--grey-400);
     color: var(--grey-400);

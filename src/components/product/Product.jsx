@@ -73,7 +73,7 @@ export default class Product extends Component {
               Out Of Stock
             </div>
             <div className="product__image__container">
-              <img src={gallery} alt={name} />
+              <img src={gallery[0]} alt={name} />
             </div>
           </div>
           <div className="product__text__container">

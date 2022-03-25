@@ -1,19 +1,65 @@
 import React, { Component } from "react";
+import ProductContext from "../../ProductContext";
 import "./productDescription.css";
 export default class ProductDescription extends Component {
   render() {
+    const { brand, name, prices, attributes, selectedAttributes } = this.props;
+    const { getPriceBasedOnCurrency } = this.context;
+    const price = getPriceBasedOnCurrency(prices);
+    const {
+      currency: { symbol },
+      amount,
+    } = price;
     return (
       <div className="description">
-        <h2 className="description__header">Apollo</h2>
-        <h2 className="description__header">Running Shoe</h2>
-        <p className="description__currency">$50.00</p>
-        <div className="description__attributes-container">
-          <div className="description__attributes">S</div>
-          <div className="description__attributes description__attributes--muted">
-            M
-          </div>
-        </div>
+        <h2 className="description__header">{brand}</h2>
+        <h2 className="description__header">{name}</h2>
+        <p className="description__currency">
+          {symbol}
+          {amount}
+        </p>
+        {attributes.map((attribute, index) => {
+          return (
+            <div key = {attribute.id} className="description__attributes-container">
+              {attribute.items.map((item) => {
+                  if (attribute.id === "Color") {
+                if (item.value === selectedAttributes[index][attribute.id]) { 
+
+                    return (
+                      <div key = {`${attribute.id}-${item.value}`}
+                        className="description__attributes description__attributes__color description__attributes__color--selected"
+                        style={{ backgroundColor: `${item.value}` }}
+                      ></div>
+                    );
+                }
+                else{
+                    return (
+                      <div key = {`${attribute.id}-${item.value}`}
+                        className="description__attributes description__attributes__color"
+                        style={{ backgroundColor: `${item.value}` }}
+                      ></div>
+                    );
+                }
+
+                  }
+                if (item.value === selectedAttributes[index][attribute.id]) { 
+                  return (
+                    <div key = {`${attribute.id}-${item.value}`} className="description__attributes description__attributes--selected">
+                      {item.value}
+                    </div>
+                  );
+                }
+                else{
+                    return (
+                      <div  key = {`${attribute.id}-${item.value}`}className="description__attributes">{item.value}</div>
+                    );
+                }
+              })}
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
+ProductDescription.contextType = ProductContext;

@@ -83,9 +83,10 @@ export default class Nav extends Component {
               <CurrencyDropDown {...{ currencies, setCurrency }} />
               <div className="nav__purchase-section__currency__chevron"></div>
             </div>
-            <div className="nav__purchase-section__cart"></div>
-          </div>
+            <div className="nav__purchase-section__cart">  </div>
           <MiniCart/>
+
+          </div>
         </nav>
       );
     }

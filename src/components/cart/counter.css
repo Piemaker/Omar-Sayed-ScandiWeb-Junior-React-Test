@@ -7,6 +7,7 @@
   border: 1.75px solid black;
   text-align: center;
   min-width: 1rem;
+  font-size: clamp(0.25rem, 4vw, 0.75rem);
 
 }
 .counter__button:hover {

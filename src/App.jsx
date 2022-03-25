@@ -72,11 +72,11 @@ export default class App extends Component {
         cart[id][productCartId] = productObj;
       }
       this.setState({cart})
-      console.log("🚀 ~ file: App.jsx ~ line 72 ~ App ~ cart", cart)
+      // console.log("🚀 ~ file: App.jsx ~ line 72 ~ App ~ cart", cart)
   }
   // LIFE CYCLES
   render() {
-    const { category, currency } = this.state;
+    const { category, currency,cart } = this.state;
     const { setCategory, setCurrency, setCart, getPriceBasedOnCurrency } = this; //* can't use this inside {}
     return (
       <ApolloProvider client={apolloClient}>
@@ -88,6 +88,7 @@ export default class App extends Component {
             setCurrency,
             setCart,
             getPriceBasedOnCurrency,
+            cart
           }}
         >
           <Router>

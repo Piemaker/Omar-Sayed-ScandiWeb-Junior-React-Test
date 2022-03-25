@@ -19,6 +19,7 @@
     color : white;
     opacity: 0;
     transition: all 0.5s ease;
+    padding: 0.25rem;
 }
 .gallery__buttons:hover{
     opacity: 1;
@@ -29,7 +30,6 @@
   width: clamp(5px, 3vw, 10px);
   height: clamp(5px, 3vw, 10px);
   background-color: white;
-  padding: 0.25rem;
   
 }
 .gallery__buttons__right-chevron{

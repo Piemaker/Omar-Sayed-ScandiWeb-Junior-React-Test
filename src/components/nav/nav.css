@@ -47,6 +47,7 @@
     display: flex;
     justify-content: center;
     align-items: center;   
+    position: relative;
 }
 .nav__purchase-section__currency{
     position: relative;
@@ -87,7 +88,6 @@
   -webkit-mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
   mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
 }
-
 .nav__purchase-section__cart{
   width: clamp(15px, 4vw, 25px);
   height: clamp(15px, 4vw, 25px);
