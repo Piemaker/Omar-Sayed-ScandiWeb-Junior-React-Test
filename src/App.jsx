@@ -35,7 +35,7 @@ export default class App extends Component {
     this.state = {
       category: "all",
       currency: { label: "USD", symbol: "$" },
-      cart : {}
+      cart: {},
     };
   }
   // FUNCTIONS
@@ -45,39 +45,58 @@ export default class App extends Component {
   setCurrency = (currency) => {
     this.setState({ currency });
   };
-  createCartId = (productAttributeArray) =>{
+  createCartId = (productAttributeArray) => {
     return JSON.stringify(productAttributeArray);
-  }
-  getPriceBasedOnCurrency = (prices) =>{
-    return prices.find((price) => price.currency.symbol === this.state.currency.symbol);
-  }
-  setCart = (productObj)=>{
-    console.log(productObj)
-     const {
-       id,
-       selectedAttributes,
-     } = productObj;
-     const productCartId = this.createCartId(selectedAttributes);
-      const {cart} = this.state;
-      if(cart.hasOwnProperty(id)){
-        if(cart[id].hasOwnProperty(productCartId)){
-          cart[id][productCartId].quantity++;
-        }
-        else{
-        cart[id][productCartId] = productObj;
-        }
-      }
-      else{
-        cart[id] = {};
+  };
+  getPriceBasedOnCurrency = (prices) => {
+    return prices.find(
+      (price) => price.currency.symbol === this.state.currency.symbol
+    );
+  };
+  setCart = (productObj) => {
+    console.log(productObj);
+    const { id, selectedAttributes } = productObj;
+    const productCartId = this.createCartId(selectedAttributes);
+    const { cart } = this.state;
+    if (cart.hasOwnProperty(id)) {
+      if (cart[id].hasOwnProperty(productCartId)) {
+        cart[id][productCartId].quantity++;
+      } else {
         cart[id][productCartId] = productObj;
       }
-      this.setState({cart})
-      // console.log("🚀 ~ file: App.jsx ~ line 72 ~ App ~ cart", cart)
-  }
+    } else {
+      cart[id] = {};
+      cart[id][productCartId] = productObj;
+    }
+    this.setState({ cart });
+    // console.log("🚀 ~ file: App.jsx ~ line 72 ~ App ~ cart", cart)
+  };
+
+  handleIncrement = (parentId, childId) => {
+    const { cart } = this.state;
+    cart[parentId][childId].quantity++;
+    this.setState({ cart: cart });
+  };
+
+  handleDecrement = (parentId, childId) => {
+    const { cart } = this.state;
+    cart[parentId][childId].quantity--;
+    if (cart[parentId][childId].quantity === 0){
+    delete cart[parentId][childId]
+    } 
+    this.setState({ cart: cart });
+  };
   // LIFE CYCLES
   render() {
-    const { category, currency,cart } = this.state;
-    const { setCategory, setCurrency, setCart, getPriceBasedOnCurrency } = this; //* can't use this inside {}
+    const { category, currency, cart } = this.state;
+    const {
+      setCategory,
+      setCurrency,
+      setCart,
+      getPriceBasedOnCurrency,
+      handleIncrement,
+      handleDecrement,
+    } = this; //* can't use this inside {}
     return (
       <ApolloProvider client={apolloClient}>
         <ProductContext.Provider
@@ -88,7 +107,9 @@ export default class App extends Component {
             setCurrency,
             setCart,
             getPriceBasedOnCurrency,
-            cart
+            cart,
+            handleIncrement,
+            handleDecrement,
           }}
         >
           <Router>

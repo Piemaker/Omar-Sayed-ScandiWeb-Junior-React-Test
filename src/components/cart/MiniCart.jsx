@@ -9,40 +9,35 @@ export default class MiniCart extends Component {
     const { cart } = this.context;
     if (Object.keys(cart).length !== 0) {
       let output = [];
-
-      for (const [key, mainProduct] of Object.entries(cart)) {
-        for (const [key, specificProduct] of Object.entries(mainProduct)) {
+      let totalQuantity = 0;
+      for (const [parentId, mainProduct] of Object.entries(cart)) {
+        for (const [childId, specificProduct] of Object.entries(mainProduct)) {
           const {
             attributes,
             brand,
             gallery,
-            id,
             name,
             prices,
             quantity,
             selectedAttributes,
           } = specificProduct;
-
+          totalQuantity += quantity;
           output.push(
-            <>
+            <div key = {`${parentId}-${childId}`} className="mini-cart__product">
               <ProductDescription
-                key={`description-${key}`}
                 {...{ name, brand, prices, attributes, selectedAttributes }}
               />
-              <div key={`gallery-${key}`} className="mini-cart__gallery">
-                <Counter {...{quantity}}/>
+                <Counter {...{quantity, parentId, childId }}/>
                 <Gallery {...{ gallery }} />
-              </div>
-            </>
+            </div>
           );
         }
       }
       return (
         <article className="mini-cart">
           <h2 className="mini-cart__header">
-            <span>my bag</span>, 2 items
+            <span>my bag</span>, {totalQuantity} items
           </h2>
-
           <div className="mini-cart__container">{output}</div>
         </article>
       );

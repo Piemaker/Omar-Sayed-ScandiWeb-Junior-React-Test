@@ -19,21 +19,16 @@
 .mini-cart__header span {
  font-weight: 700;
 }
-
-.mini-cart__container {
+.mini-cart__container{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
   max-height: 250px;
   overflow: auto;
   padding: 0.5rem;
+  grid-row-gap: 16px;
 
-
-   
-  
 }
-.mini-cart__gallery{
-    display: flex;
-    gap: 0.5rem;
+.mini-cart__product {
+  display: grid;
+  grid-template-columns: 6fr 1fr 5fr;
+  grid-column-gap: 16px;
 }
