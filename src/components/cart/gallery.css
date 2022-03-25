@@ -1,48 +1,44 @@
-.gallery{
-    position: relative;    
+.gallery {
+  position: relative;
 }
 
-.gallery__img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;    
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.gallery__img:hover +.gallery__buttons{
-    opacity: 1;
+.gallery__img:hover + .gallery__buttons {
+  opacity: 1;
 }
-.gallery__buttons{
-    display: flex;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color : white;
-    opacity: 0;
-    transition: all 0.5s ease;
-    padding: 0.25rem;
+.gallery__buttons {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  opacity: 0;
+  transition: all 0.5s ease;
 }
-.gallery__buttons:hover{
-    opacity: 1;
+.gallery__buttons:hover {
+  opacity: 1;
 }
-.gallery__buttons__right-chevron,.gallery__buttons__left-chevron{
-    box-sizing: border-box;
-    cursor: pointer;
-  width: clamp(5px, 3vw, 10px);
-  height: clamp(5px, 3vw, 10px);
+.gallery__buttons__right-chevron,
+.gallery__buttons__left-chevron {
+  box-sizing: border-box;
+  cursor: pointer;
+  width: clamp(5px, 3vw, 15px);
+  height: clamp(5px, 3vw, 15px);
   background-color: white;
-  
 }
-.gallery__buttons__right-chevron{
-    margin-left : auto;
-    margin-right : 0;
-    -webkit-mask: url("../../assets/chevron-right-solid.svg") no-repeat center;
-    mask: url("../../assets/chevron-right-solid.svg") no-repeat center;
-
+.gallery__buttons__right-chevron {
+  margin-left: auto;
+  margin-right: 0;
+  -webkit-mask: url("../../assets/chevron-right-solid.svg") no-repeat center;
+  mask: url("../../assets/chevron-right-solid.svg") no-repeat center;
 }
 
-
-.gallery__buttons__left-chevron{
-    -webkit-mask: url("../../assets/chevron-left-solid.svg") no-repeat center;
-    mask: url("../../assets/chevron-left-solid.svg") no-repeat center;
-
+.gallery__buttons__left-chevron {
+  -webkit-mask: url("../../assets/chevron-left-solid.svg") no-repeat center;
+  mask: url("../../assets/chevron-left-solid.svg") no-repeat center;
 }

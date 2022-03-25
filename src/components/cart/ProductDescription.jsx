@@ -3,13 +3,9 @@ import ProductContext from "../../ProductContext";
 import "./productDescription.css";
 export default class ProductDescription extends Component {
   render() {
-    const { brand, name, prices, attributes, selectedAttributes } = this.props;
-    const { getPriceBasedOnCurrency } = this.context;
-    const price = getPriceBasedOnCurrency(prices);
-    const {
-      currency: { symbol },
-      amount,
-    } = price;
+    const { brand, name, symbol, amount, attributes, selectedAttributes } =
+      this.props;
+
     return (
       <div className="description">
         <h2 className="description__header">{brand}</h2>
@@ -20,39 +16,48 @@ export default class ProductDescription extends Component {
         </p>
         {attributes.map((attribute, index) => {
           return (
-            <div key = {attribute.id} className="description__attributes-container">
+            <div
+              key={attribute.id}
+              className="description__attributes-container"
+            >
               {attribute.items.map((item) => {
-                  if (attribute.id === "Color") {
-                if (item.value === selectedAttributes[index][attribute.id]) { 
-
+                if (attribute.id === "Color") {
+                  if (item.value === selectedAttributes[index][attribute.id]) {
                     return (
-                      <div key = {`${attribute.id}-${item.value}`}
+                      <div
+                        key={`${attribute.id}-${item.value}`}
                         className="description__attributes description__attributes__color description__attributes__color--selected"
                         style={{ backgroundColor: `${item.value}` }}
                       ></div>
                     );
-                }
-                else{
+                  } else {
                     return (
-                      <div key = {`${attribute.id}-${item.value}`}
+                      <div
+                        key={`${attribute.id}-${item.value}`}
                         className="description__attributes description__attributes__color"
                         style={{ backgroundColor: `${item.value}` }}
                       ></div>
                     );
-                }
-
                   }
-                if (item.value === selectedAttributes[index][attribute.id]) { 
+                }
+                if (item.value === selectedAttributes[index][attribute.id]) {
                   return (
-                    <div key = {`${attribute.id}-${item.value}`} className="description__attributes description__attributes--selected">
+                    <div
+                      key={`${attribute.id}-${item.value}`}
+                      className="description__attributes description__attributes--selected"
+                    >
                       {item.value}
                     </div>
                   );
-                }
-                else{
-                    return (
-                      <div  key = {`${attribute.id}-${item.value}`}className="description__attributes">{item.value}</div>
-                    );
+                } else {
+                  return (
+                    <div
+                      key={`${attribute.id}-${item.value}`}
+                      className="description__attributes"
+                    >
+                      {item.value}
+                    </div>
+                  );
                 }
               })}
             </div>
