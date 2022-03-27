@@ -93,3 +93,13 @@ p {
 .product__container:hover .product__image__grid__icon-container {
   opacity: 1;
 }
+.color-box{
+flex :1;
+height: clamp(0.5rem, 4vh, 1rem);
+border : 1px solid black;
+}
+.color-box__container{
+display: flex;
+gap : 0.25rem;
+justify-content: space-between;
+}

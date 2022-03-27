@@ -1,14 +1,13 @@
-
-.grid-container{
-        margin: 6rem auto;
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+.grid-container {
+  margin: 6rem auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.category-title{
-    font-family: var(--heading-font);
-    font-weight: 200;
-    margin-bottom: var(--margin-bottom);
-    text-transform: capitalize;
+.category-title {
+  font-family: var(--heading-font);
+  font-weight: 200;
+  margin-bottom: var(--margin-bottom);
+  text-transform: capitalize;
 }
