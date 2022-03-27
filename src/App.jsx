@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import {useParams}  from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Cart, Category, Error, Nav, PDP } from "./components";
+import { Cart, Category, Error, MiniCart, Nav, PDP } from "./components";
 import ProductContext from "./ProductContext";
 import "./normalize.css";
 import "./app.css";
@@ -36,6 +36,7 @@ export default class App extends Component {
       category: "all",
       currency: { label: "USD", symbol: "$" },
       cart: {},
+      isCartOpen: false,
     };
   }
   // FUNCTIONS
@@ -54,7 +55,6 @@ export default class App extends Component {
     );
   };
   setCart = (productObj) => {
-    console.log(productObj);
     const { id, selectedAttributes } = productObj;
     const productCartId = this.createCartId(selectedAttributes);
     const { cart } = this.state;
@@ -81,14 +81,20 @@ export default class App extends Component {
   handleDecrement = (parentId, childId) => {
     const { cart } = this.state;
     cart[parentId][childId].quantity--;
-    if (cart[parentId][childId].quantity === 0){
-    delete cart[parentId][childId]
-    } 
+    if (cart[parentId][childId].quantity === 0) {
+      delete cart[parentId][childId];
+    }
     this.setState({ cart: cart });
+  };
+  toggleCart = (e) => {
+    if (e.currentTarget === e.target) {
+      const newValue = !this.state.isCartOpen;
+      this.setState({ isCartOpen: newValue });
+    }
   };
   // LIFE CYCLES
   render() {
-    const { category, currency, cart } = this.state;
+    const { category, currency, cart, isCartOpen } = this.state;
     const {
       setCategory,
       setCurrency,
@@ -96,6 +102,7 @@ export default class App extends Component {
       getPriceBasedOnCurrency,
       handleIncrement,
       handleDecrement,
+      toggleCart,
     } = this; //* can't use this inside {}
     return (
       <ApolloProvider client={apolloClient}>
@@ -110,10 +117,13 @@ export default class App extends Component {
             cart,
             handleIncrement,
             handleDecrement,
+            toggleCart,
+            isCartOpen,
           }}
         >
           <Router>
             <Nav />
+            <MiniCart {...isCartOpen} />
             <Switch>
               <Route exact path="/" children={<Category />} />
               <Route

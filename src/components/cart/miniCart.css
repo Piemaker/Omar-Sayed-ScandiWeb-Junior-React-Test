@@ -1,10 +1,22 @@
 @import url("../../root.css");
+.mini-cart__overlay{
+  display: none;
+  position: absolute;
+  top: 5.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.342);
+  z-index: 999;
+}
+.mini-cart__overlay--show{
+  display: block;
+}
 .mini-cart {
   min-width: 175px;
   max-width: 250px;
   position: absolute;
-  top: 2rem;
-  right : 0.25rem;
+  right : 0;
   z-index: 999;
   background-color: white;
   padding: 1rem;

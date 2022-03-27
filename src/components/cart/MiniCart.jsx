@@ -8,13 +8,12 @@ import ProductDescription from "./ProductDescription";
 export default class MiniCart extends Component {
    
   render() {
-     const { getPriceBasedOnCurrency } = this.context;
-    const { cart } = this.context;
+     const { cart,getPriceBasedOnCurrency, isCartOpen, toggleCart } = this.context;
+     let output = [];
+     let totalQuantity = 0;
+     let totalPrice = 0;
+     let currentSymbol = "";
     if (Object.keys(cart).length !== 0) {
-      let output = [];
-      let totalQuantity = 0;
-      let totalPrice = 0;
-      let currentSymbol = "";
       for (const [parentId, mainProduct] of Object.entries(cart)) {
         for (const [childId, specificProduct] of Object.entries(mainProduct)) {
           const {
@@ -45,27 +44,41 @@ export default class MiniCart extends Component {
           );
         }
       }
-      return (
-        <article className="mini-cart">
-          <h2 className="mini-cart__header">
-            <span>my bag</span>, {totalQuantity} items
-          </h2>
-          <div className="mini-cart__container">{output}</div>
-          <div className="mini-cart__total-price">
-            <p className="mini-cart__total-price__title">total</p>
-            <p className="mini-cart__total-price__price">{currentSymbol}{totalPrice.toPrecision(10)}</p>
-          </div>
-          <div className="mini-cart__buttons__container">
-            <Link className="mini-cart__buttons" to="/cart">view cart
-            </Link>
-            <Link to  = "/checkout" className="mini-cart__buttons mini-cart__buttons--checkout">
-              check out
-            </Link>
-          </div>
-        </article>
-      );
+      
     }
-    return <></>;
+   return (
+     <div
+       onClickCapture={(e) => {toggleCart(e)}}
+       className={`mini-cart__overlay ${
+         isCartOpen && "mini-cart__overlay--show"
+       }`}
+     >
+       <article className="mini-cart" id = "mini-cart">
+         <h2 className="mini-cart__header">
+           <span>my bag</span>, {totalQuantity} items
+         </h2>
+         <div className="mini-cart__container">{output}</div>
+         <div className="mini-cart__total-price">
+           <p className="mini-cart__total-price__title">total</p>
+           <p className="mini-cart__total-price__price">
+             {currentSymbol}
+             {totalPrice.toFixed(4)}
+           </p>
+         </div>
+         <div className="mini-cart__buttons__container">
+           <Link className="mini-cart__buttons" to="/cart">
+             view cart
+           </Link>
+           <Link
+             to="/checkout"
+             className="mini-cart__buttons mini-cart__buttons--checkout"
+           >
+             check out
+           </Link>
+         </div>
+       </article>
+     </div>
+   );
   }
 }
 

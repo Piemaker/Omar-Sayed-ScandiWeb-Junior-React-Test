@@ -1,5 +1,6 @@
 @import "./root.css";
 body{
+    position: relative;
     padding: 1rem;
     max-width: var(--maxContainerWidth);
     margin : 0 auto;
