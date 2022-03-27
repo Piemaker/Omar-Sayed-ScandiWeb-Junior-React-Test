@@ -16,7 +16,7 @@ export default class PDP extends Component {
       error: "",
       imgSrc: "",
       selectedAttributes: [],
-      showDialog : false,
+      showDialog: false,
     };
   }
   // FUNCTIONS
@@ -60,11 +60,11 @@ export default class PDP extends Component {
       selectedAttributes,
       quantity: 1,
     });
-    this.setState({showDialog : true})
+    this.setState({ showDialog: true });
   };
-  closeDialog = ()=>{
-    this.setState({showDialog : false});
-  }
+  closeDialog = () => {
+    this.setState({ showDialog: false });
+  };
   // LIFE CYCLES
   componentDidMount() {
     const { id } = this.props;
@@ -72,7 +72,7 @@ export default class PDP extends Component {
   }
   render() {
     const { data, loading, error, showDialog } = this.state;
-    const {closeDialog} = this;
+    const { closeDialog } = this;
     if (loading) {
       return <Loader />;
     }
@@ -80,10 +80,8 @@ export default class PDP extends Component {
       return <h1>{error}</h1>;
     }
     if (data.length !== 0) {
-      const {
-        getPriceBasedOnCurrency
-      } = this.context;
-      const { attributes, brand, description, gallery, name, prices } =
+      const { getPriceBasedOnCurrency } = this.context;
+      const { attributes, brand, description, gallery, name, prices, inStock } =
         data.product;
       const price = getPriceBasedOnCurrency(prices);
       return (
@@ -155,13 +153,19 @@ export default class PDP extends Component {
               </p>
             </div>
             <div className="product__details-container__call-to-action">
-              <button type="submit">add to cart</button>
+              {inStock ? (
+                <button type="submit">add to cart</button>
+              ) : (
+                <button disabled type="submit">
+                  unavailable
+                </button>
+              )}
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: description }}
               className="product__details-container__description"
             ></div>
-            <AddedDialog showDialog = {showDialog} closeDialog = {closeDialog} />
+            <AddedDialog showDialog={showDialog} closeDialog={closeDialog} />
           </form>
         </article>
       );

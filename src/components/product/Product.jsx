@@ -57,9 +57,13 @@ export default class Product extends Component {
           }`}
         >
           <div className="product__image__grid">
-            <div className="product__image__grid__icon-container">
+            <div
+              className={`product__image__grid__icon-container ${
+                inStock && "product__image__grid__icon-container--show"
+              }`}
+            >
               <div
-                className="product__image__grid__add-icon"
+                className={`product__image__grid__add-icon`}
                 onClick={this.handleClick}
               ></div>
             </div>

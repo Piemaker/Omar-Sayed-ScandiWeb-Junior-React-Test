@@ -1,4 +1,7 @@
 @import url("../../root.css");
+:root{
+  --space : 0.5rem;
+}
 .mini-cart__overlay{
   display: none;
   position: absolute;
@@ -26,7 +29,8 @@
 .mini-cart__header {
     font-size: clamp(0.25rem, 4vw, 0.75rem);
     text-transform: capitalize;
-    font-weight: 200;    
+    font-weight: 200;  
+    margin-left: var(--space);  
 }
 .mini-cart__header span {
  font-weight: 700;
@@ -36,7 +40,7 @@
   grid-row-gap: 16px;
   max-height: 250px;
   overflow: auto;
-
+  padding: var(--space);
 }
 .mini-cart__product {
   display: grid;
