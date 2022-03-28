@@ -69,6 +69,7 @@ export default class App extends Component {
       cart[id][productCartId] = productObj;
     }
     this.setState({ cart });
+    localStorage.setItem("cart",JSON.stringify(cart));
     // console.log("🚀 ~ file: App.jsx ~ line 72 ~ App ~ cart", cart)
   };
 
@@ -76,6 +77,8 @@ export default class App extends Component {
     const { cart } = this.state;
     cart[parentId][childId].quantity++;
     this.setState({ cart: cart });
+    localStorage.setItem("cart", JSON.stringify(cart));
+
   };
 
   handleDecrement = (parentId, childId) => {
@@ -85,6 +88,7 @@ export default class App extends Component {
       delete cart[parentId][childId];
     }
     this.setState({ cart: cart });
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
   toggleCart = (e) => {
     if (e.currentTarget === e.target) {
@@ -107,6 +111,15 @@ export default class App extends Component {
     }
 
   // LIFE CYCLES
+  componentDidMount(){
+    let cart = localStorage.getItem("cart");
+    if(cart){
+      cart = JSON.parse(cart);
+      this.setState({cart});
+    }
+
+  }
+
   render() {
     const { category, currency, cart, isCartOpen } = this.state;
     const {
