@@ -92,6 +92,20 @@ export default class App extends Component {
       this.setState({ isCartOpen: newValue });
     }
   };
+  getCartItemCount = ()=>{
+    const {cart} = this.state;
+    let totalQuantity = 0;
+    for (const [parentId, mainProduct] of Object.entries(cart)) {
+        for (const [childId, specificProduct] of Object.entries(mainProduct)) {
+          const {
+            quantity,
+          } = specificProduct;
+          totalQuantity += quantity;          
+        }
+      }
+      return totalQuantity;
+    }
+
   // LIFE CYCLES
   render() {
     const { category, currency, cart, isCartOpen } = this.state;
@@ -103,6 +117,7 @@ export default class App extends Component {
       handleIncrement,
       handleDecrement,
       toggleCart,
+      getCartItemCount,
     } = this; //* can't use this inside {}
     return (
       <ApolloProvider client={apolloClient}>
@@ -119,6 +134,7 @@ export default class App extends Component {
             handleDecrement,
             toggleCart,
             isCartOpen,
+            getCartItemCount,
           }}
         >
           <Router>

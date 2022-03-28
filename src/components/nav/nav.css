@@ -88,13 +88,30 @@
   -webkit-mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
   mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
 }
-.nav__purchase-section__cart{
+.nav__purchase-section__cart__container{
+  position: relative;
+  display: flex;
+}
+
+.nav__purchase-section__cart__icon{
   width: clamp(15px, 4vw, 25px);
   height: clamp(15px, 4vw, 25px);
-
   background-color: black;
   -webkit-mask: url("../../assets/cart-shopping-solid.svg") no-repeat center;
   mask: url("../../assets/cart-shopping-solid.svg") no-repeat center;
+  cursor: pointer;
+}
+.nav__purchase-section__cart__badge{
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width : 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: black;
+  font-size: 0.65rem;
+  color: white;
+  text-align: center;
 }
 .nav__purchase-section__currency:hover, .nav__purchase-section__cart:hover{
     cursor: pointer;

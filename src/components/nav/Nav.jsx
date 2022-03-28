@@ -31,7 +31,7 @@ export default class Nav extends Component {
     this.setState({ clicked });
     this.context.setCategory(clicked);
   };
- 
+
   // LIFE CYCLES
   componentDidMount() {
     this.fetchCategoriesAndCurrencies();
@@ -51,7 +51,7 @@ export default class Nav extends Component {
     if (data.length !== 0) {
       const { clicked } = this.state;
       const { categories, currencies } = data;
-      const {toggleCart} = this.context;
+      const { toggleCart, getCartItemCount } = this.context;
 
       return (
         <nav className="nav">
@@ -86,10 +86,13 @@ export default class Nav extends Component {
               <CurrencyDropDown {...{ currencies, setCurrency }} />
               <div className="nav__purchase-section__currency__chevron"></div>
             </div>
-            <div
-              className="nav__purchase-section__cart"
-              onClick={toggleCart}
-            ></div>
+            <div className="nav__purchase-section__cart__container">
+              <div
+                className="nav__purchase-section__cart__icon"
+                onClick={toggleCart}
+              ></div>
+              <div className="nav__purchase-section__cart__badge">{getCartItemCount()}</div>
+            </div>
           </div>
         </nav>
       );
