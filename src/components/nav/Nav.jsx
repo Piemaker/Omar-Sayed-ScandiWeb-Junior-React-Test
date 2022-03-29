@@ -7,7 +7,6 @@ import { apolloClient } from "../../App";
 import ProductContext from "../../ProductContext";
 import Loader from "../loader/Loader";
 import { Link } from "react-router-dom";
-import MiniCart from "../cart/MiniCart";
 export default class Nav extends Component {
   constructor(props) {
     super(props);
@@ -91,7 +90,9 @@ export default class Nav extends Component {
                 className="nav__purchase-section__cart__icon"
                 onClick={toggleCart}
               ></div>
-              <div className="nav__purchase-section__cart__badge">{getCartItemCount()}</div>
+              <div className="nav__purchase-section__cart__badge">
+                {getCartItemCount()}
+              </div>
             </div>
           </div>
         </nav>

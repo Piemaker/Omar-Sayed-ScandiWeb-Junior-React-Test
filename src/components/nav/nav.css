@@ -3,7 +3,6 @@
   grid-template-columns: repeat(3, auto);
   margin: 1rem 0 1rem 0;
   font-size: clamp(0.5rem, 3vw, 1rem);
-
 }
 .nav__category-items ul {
   display: flex;
@@ -24,7 +23,7 @@
 .nav__category-items ul button:hover {
   cursor: pointer;
 }
-.nav__category-items--clicked{
+.nav__category-items--clicked {
   color: var(--green-400) !important;
   border-bottom: solid 2px var(--green-400) !important;
 }
@@ -34,7 +33,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .nav__logo__container div {
   width: clamp(15px, 4vw, 25px);
@@ -43,57 +41,56 @@
   -webkit-mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
   mask: url("../../assets/bag-shopping-solid.svg") no-repeat center;
 }
-.nav__purchase-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    position: relative;
+.nav__purchase-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-.nav__purchase-section__currency{
-    position: relative;
-    display: flex;
-    align-items: center;
-    min-width : 4rem;   
-
+.nav__purchase-section__currency {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 4rem;
 }
-.nav__purchase-section__currency__dropdown{
-    position: absolute;
-    height: 0;
-    display: none;
-    min-width: 4rem;
-    margin: 0;
-    padding: 10px 5px 10px 5px;
-    top: 10px;
-    left :0;
-    list-style:none;
-    z-index: 100;
+.nav__purchase-section__currency__dropdown {
+  position: absolute;
+  height: 0;
+  display: none;
+  min-width: 4rem;
+  margin: 0;
+  padding: 10px 5px 10px 5px;
+  top: 10px;
+  left: 0;
+  list-style: none;
+  z-index: 100;
 }
-.nav__purchase-section__currency:hover .nav__purchase-section__currency__dropdown{
-    display: block !important;
-    height: auto;
+.nav__purchase-section__currency:hover
+  .nav__purchase-section__currency__dropdown {
+  display: block !important;
+  height: auto;
 }
-.nav__purchase-section__currency__dropdown li{
-  padding : 10px 0 10px 0;
+.nav__purchase-section__currency__dropdown li {
+  padding: 10px 0 10px 0;
 }
-.nav__purchase-section__currency__dropdown li:hover{
-    color: var(--green-400) !important;
+.nav__purchase-section__currency__dropdown li:hover {
+  color: var(--green-400) !important;
   border-bottom: solid 2px var(--green-400) !important;
 }
-.nav__purchase-section__currency__chevron{
-  
-  margin: 0 1rem 0 0.5rem;  
+.nav__purchase-section__currency__chevron {
+  margin: 0 1rem 0 0.5rem;
   width: 10px;
   height: 10px;
   background-color: black;
   -webkit-mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
   mask: url("../../assets/chevron-down-solid.svg") no-repeat center;
 }
-.nav__purchase-section__cart__container{
+.nav__purchase-section__cart__container {
   position: relative;
   display: flex;
 }
 
-.nav__purchase-section__cart__icon{
+.nav__purchase-section__cart__icon {
   width: clamp(15px, 4vw, 25px);
   height: clamp(15px, 4vw, 25px);
   background-color: black;
@@ -101,11 +98,11 @@
   mask: url("../../assets/cart-shopping-solid.svg") no-repeat center;
   cursor: pointer;
 }
-.nav__purchase-section__cart__badge{
+.nav__purchase-section__cart__badge {
   position: absolute;
   top: -0.5rem;
   right: -0.5rem;
-  width : 1rem;
+  width: 1rem;
   height: 1rem;
   border-radius: 50%;
   background-color: black;
@@ -113,6 +110,7 @@
   color: white;
   text-align: center;
 }
-.nav__purchase-section__currency:hover, .nav__purchase-section__cart:hover{
-    cursor: pointer;
-} 
+.nav__purchase-section__currency:hover,
+.nav__purchase-section__cart:hover {
+  cursor: pointer;
+}

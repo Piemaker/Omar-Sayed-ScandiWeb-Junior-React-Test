@@ -20,6 +20,7 @@ export default class Category extends Component {
     const { data, loading, error } = await apolloClient.query({
       query: GET_CATEGORY,
       variables: { category },
+      fetchPolicy: "no-cache",
     });
 
     this.setState({ data, loading, error, category: this.context.category });

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProductContext from "../../ProductContext";
+import ProductContext from "../../../ProductContext";
 import "./productDescription.css";
 export default class ProductDescription extends Component {
   render() {

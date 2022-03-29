@@ -24,6 +24,7 @@ export default class PDP extends Component {
     const { data, loading, error } = await apolloClient.query({
       query: GET_PRODUCT,
       variables: { productId },
+      fetchPolicy: "no-cache",
     });
     const {
       product: { gallery },
@@ -121,6 +122,7 @@ export default class PDP extends Component {
                     <h3>{attribute.name}:</h3>
                     <div className="product__details-container__attributes-container">
                       {attribute.items.map((item) => {
+                        console.log(item,item.value)
                         if (attribute.type === "swatch") {
                           return (
                             <ColorBox

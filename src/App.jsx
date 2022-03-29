@@ -69,7 +69,7 @@ export default class App extends Component {
       cart[id][productCartId] = productObj;
     }
     this.setState({ cart });
-    localStorage.setItem("cart",JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
     // console.log("🚀 ~ file: App.jsx ~ line 72 ~ App ~ cart", cart)
   };
 
@@ -78,7 +78,6 @@ export default class App extends Component {
     cart[parentId][childId].quantity++;
     this.setState({ cart: cart });
     localStorage.setItem("cart", JSON.stringify(cart));
-
   };
 
   handleDecrement = (parentId, childId) => {
@@ -96,28 +95,25 @@ export default class App extends Component {
       this.setState({ isCartOpen: newValue });
     }
   };
-  getCartItemCount = ()=>{
-    const {cart} = this.state;
+  getCartItemCount = () => {
+    const { cart } = this.state;
     let totalQuantity = 0;
-    for (const [parentId, mainProduct] of Object.entries(cart)) {
-        for (const [childId, specificProduct] of Object.entries(mainProduct)) {
-          const {
-            quantity,
-          } = specificProduct;
-          totalQuantity += quantity;          
-        }
+    for (const mainProduct of Object.values(cart)) {
+      for (const specificProduct of Object.values(mainProduct)) {
+        const { quantity } = specificProduct;
+        totalQuantity += quantity;
       }
-      return totalQuantity;
     }
+    return totalQuantity;
+  };
 
   // LIFE CYCLES
-  componentDidMount(){
+  componentDidMount() {
     let cart = localStorage.getItem("cart");
-    if(cart){
+    if (cart) {
       cart = JSON.parse(cart);
-      this.setState({cart});
+      this.setState({ cart });
     }
-
   }
 
   render() {
