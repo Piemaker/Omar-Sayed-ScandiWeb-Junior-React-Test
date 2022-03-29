@@ -20,13 +20,14 @@ export default class Category extends Component {
     const { data, loading, error } = await apolloClient.query({
       query: GET_CATEGORY,
       variables: { category },
-      fetchPolicy: "no-cache",
+      fetchPolicy: "network-only", // Used for first execution
+      nextFetchPolicy: "cache-first", // Used for subsequent executions
     });
 
     this.setState({ data, loading, error, category: this.context.category });
   };
 
-  // LIFE CYCLES 
+  // LIFE CYCLES
   componentDidMount() {
     this.fetchCategory({ title: this.context.category });
   }

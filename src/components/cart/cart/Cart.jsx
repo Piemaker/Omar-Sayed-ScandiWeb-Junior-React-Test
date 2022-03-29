@@ -10,9 +10,6 @@ export default class Cart extends Component {
     const { cart, getPriceBasedOnCurrency, isCartOpen, toggleCart } =
       this.context;
     let output = [];
-    let totalQuantity = 0;
-    let totalPrice = 0;
-    let currentSymbol = "";
     if (Object.keys(cart).length !== 0) {
       for (const [parentId, mainProduct] of Object.entries(cart)) {
         for (const [childId, specificProduct] of Object.entries(mainProduct)) {
@@ -30,9 +27,6 @@ export default class Cart extends Component {
             currency: { symbol },
             amount,
           } = price;
-          currentSymbol = symbol;
-          totalQuantity += quantity;
-          totalPrice += quantity * amount;
           output.push(
             <div key={`${parentId}-${childId}`} className="cart__product">
               <ProductDescription
@@ -54,7 +48,12 @@ export default class Cart extends Component {
         }
       }
     }
-    return <article className="cart">{output}</article>;
+    return (
+      <article className="cart">
+        <h1 className="cart__heading">cart</h1>
+        {output}
+      </article>
+    );
   }
 }
 
