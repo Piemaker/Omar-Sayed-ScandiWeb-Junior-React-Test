@@ -24,8 +24,7 @@ export default class PDP extends Component {
     const { data, loading, error } = await apolloClient.query({
       query: GET_PRODUCT,
       variables: { productId },
-      fetchPolicy: "network-only", // Used for first execution
-      nextFetchPolicy: "cache-first", // Used for subsequent executions
+     
     });
     const {
       product: { gallery },

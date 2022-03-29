@@ -26,6 +26,8 @@ export const GET_CATEGORY = gql`
         gallery
         brand
         attributes {
+          # Disable Apollo caching for this attribute
+          __typename @skip(if: true)
           id
           name
           type
@@ -89,6 +91,8 @@ export const GET_PRODUCT = gql`
       description
       category
       attributes {
+        # Disable Apollo caching for this attribute
+        __typename @skip(if: true)
         id
         name
         type

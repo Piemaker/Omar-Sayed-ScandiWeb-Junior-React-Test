@@ -15,6 +15,7 @@ export default class Product extends Component {
     e.preventDefault();
     const { setCart } = this.context;
     const { id, name, brand, prices, attributes, gallery } = this.props;
+    console.log("🚀 ~ file: Product.jsx ~ line 18 ~ Product ~ attributes", attributes)
     // SELECT FIRST ATTRIBUTE AS DEFAULT
     const selectedAttributes = attributes.map((attr) => {
       const { id } = attr;
@@ -30,7 +31,7 @@ export default class Product extends Component {
       selectedAttributes,
       quantity: 1,
     });
-    this.setState({showDialog : true})
+    this.setState({ showDialog: true });
   };
 
   closeDialog = () => {
@@ -46,10 +47,10 @@ export default class Product extends Component {
       currency: { symbol },
       amount,
     } = price;
-   const {closeDialog} = this;
-   const {showDialog} = this.state;
-   const colorBoxes = attributes.map((attribute,index) => {
-      if(attribute.type === "swatch"){
+    const { closeDialog } = this;
+    const { showDialog } = this.state;
+    const colorBoxes = attributes.map((attribute, index) => {
+      if (attribute.type === "swatch") {
         return (
           <div
             key={`${attribute.type}-${index}`}
@@ -67,14 +68,14 @@ export default class Product extends Component {
           </div>
         );
       }
-   })
+    });
     return (
       <article
-          className={`product__container ${
-            inStock ? "" : "product__container--faded"
-          }`}
-        >
-            <Link to={`/product/${id}`}>
+        className={`product__container ${
+          inStock ? "" : "product__container--faded"
+        }`}
+      >
+        <Link to={`/product/${id}`}>
           <div className="product__image__grid">
             <div
               className={`product__image__grid__icon-container ${
@@ -108,11 +109,11 @@ export default class Product extends Component {
             </p>
           </div>
           {colorBoxes}
-      </Link>
-      <AddedDialog showDialog={showDialog} closeDialog={closeDialog} />
-        </article>
+        </Link>
+        <AddedDialog showDialog={showDialog} closeDialog={closeDialog} />
+      </article>
     );
   }
 }
 
-Product.contextType = ProductContext
+Product.contextType = ProductContext;
