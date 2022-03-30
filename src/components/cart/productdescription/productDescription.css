@@ -1,47 +1,49 @@
 @import url("../../../root.css");
-.description{
-    display: flex;
-    flex-direction: column;
-    font-size: clamp(0.25rem, 4vw, 1rem);
-    justify-content: space-around;
+.description {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(0.75rem, 0.85vw, 1.5vw);
+  justify-content: space-around;
 }
-.description__header{
-    font-size: clamp(0.75rem,4vw,calc(0.1rem + 1vw));
-    font-weight: 400;
-    color: var(--grey-800);
-    margin: 0;
+.description__header {
+  font-size: clamp(0.75rem, 0.85vw, 1.5vw);
+  font-weight: 400;
+  color: var(--grey-800);
+  margin: 0;
 }
-.description__currency{
-    padding: 0;
-    font-weight: 700;
-    margin-top: 0.25rem;
+
+.description__header__brand {
+  font-weight: 700;
 }
-.description__attributes-container{
-    font-size: clamp(0.15rem, 4vw, 1rem);
-    display: flex;
-    gap: 0.25rem;
-    margin-top: 0.5rem;
+.description__currency {
+  padding: 0;
+  font-weight: 700;
+  margin-top: 0.25rem;
 }
-.description__attributes{
-    border: 1.75px solid black;
-    flex: 1;
-    text-align: center;    
+.description__attributes-container {
+  font-size: clamp(0.15rem, 4vw, 1rem);
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
 }
-.description__attributes__color{
+.description__attributes {
+  border: 1.75px solid black;
+  flex: 1;
+  text-align: center;
+}
+.description__attributes__color {
   height: clamp(0.3rem, 7.5vh, 1rem);
-
 }
-.description__attributes__color--selected{
-    transform: scale(1.1);
-}
-
-.description__attributes--selected{
-    background-color: black;
-    color : white;
+.description__attributes__color--selected {
+  transform: scale(1.1);
 }
 
-.description__attributes--muted{
-    border: 1.75px solid var(--grey-400);
-    color: var(--grey-400);
+.description__attributes--selected {
+  background-color: black;
+  color: white;
 }
 
+.description__attributes--muted {
+  border: 1.75px solid var(--grey-400);
+  color: var(--grey-400);
+}

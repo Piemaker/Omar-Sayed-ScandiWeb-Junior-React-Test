@@ -3,12 +3,12 @@ import ProductContext from "../../../ProductContext";
 import "./productDescription.css";
 export default class ProductDescription extends Component {
   render() {
-    const { brand, name, symbol, amount, attributes, selectedAttributes } =
+    const { brand, name, symbol, amount, attributes, selectedAttributes, boldFont = false } =
       this.props;
 
     return (
       <div className="description">
-        <h2 className="description__header">{brand}</h2>
+        <h2 className={`description__header ${boldFont && "description__header__brand"}`}>{brand}</h2>
         <h2 className="description__header">{name}</h2>
         <p className="description__currency">
           {symbol}

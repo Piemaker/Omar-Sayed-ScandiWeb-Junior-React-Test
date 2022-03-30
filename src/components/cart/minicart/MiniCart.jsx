@@ -24,6 +24,7 @@ export default class MiniCart extends Component {
             prices,
             quantity,
             selectedAttributes,
+            id
           } = specificProduct;
           const price = getPriceBasedOnCurrency(prices);
           const {
@@ -46,7 +47,7 @@ export default class MiniCart extends Component {
                 }}
               />
               <Counter {...{ quantity, parentId, childId }} />
-              <Gallery {...{ gallery }} />
+              <Gallery {...{ gallery, id }} />
             </div>
           );
         }

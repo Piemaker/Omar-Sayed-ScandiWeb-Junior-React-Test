@@ -24,7 +24,6 @@ export default class PDP extends Component {
     const { data, loading, error } = await apolloClient.query({
       query: GET_PRODUCT,
       variables: { productId },
-     
     });
     const {
       product: { gallery },
@@ -70,6 +69,12 @@ export default class PDP extends Component {
   componentDidMount() {
     const { id } = this.props;
     this.fetchProduct(id);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      const { id } = this.props;
+      this.fetchProduct(id);
+    }
   }
   render() {
     const { data, loading, error, showDialog } = this.state;

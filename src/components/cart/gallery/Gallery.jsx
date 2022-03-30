@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import "./gallery.css"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./gallery.css";
 
 export default class Gallery extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class Gallery extends Component {
   // FUNCTIONS
   handleNext = () => {
     const { index } = this.state;
-    const {gallery} = this.props;
+    const { gallery, id } = this.props;
     if (index < gallery.length - 1) {
       this.setState({ index: index + 1 });
     } else {
@@ -19,24 +20,36 @@ export default class Gallery extends Component {
     }
   };
   handlePrev = () => {
-    const { index} = this.state;
+    const { index } = this.state;
     const { gallery } = this.props;
     if (index > 1) {
-      this.setState({ index: index -1  });
+      this.setState({ index: index - 1 });
     } else {
-      this.setState({ index: (gallery.length - 1) });
+      this.setState({ index: gallery.length - 1 });
     }
   };
   // LIFE CYCLES
   render() {
-    const { name, gallery } = this.props;
-    const {index} = this.state;
+    const { name, gallery, id } = this.props;
+    const { index } = this.state;
     return (
       <div className="gallery">
-        <img className="gallery__img" src={gallery[index]} alt={name} />
+        <Link to={`/product/${id}`}>
+          <img className="gallery__img" src={gallery[index]} alt={name} />
+        </Link>
         <div className="gallery__buttons">
-          <div className="gallery__buttons__left-chevron"  onClick = {this.handlePrev}> </div>
-          <div className="gallery__buttons__right-chevron" onClick = {this.handleNext}> </div>
+          <div
+            className="gallery__buttons__left-chevron"
+            onClick={this.handlePrev}
+          >
+            {" "}
+          </div>
+          <div
+            className="gallery__buttons__right-chevron"
+            onClick={this.handleNext}
+          >
+            {" "}
+          </div>
         </div>
       </div>
     );

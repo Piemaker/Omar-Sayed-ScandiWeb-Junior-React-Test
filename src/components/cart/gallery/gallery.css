@@ -11,6 +11,7 @@
   opacity: 1;
 }
 .gallery__buttons {
+  box-sizing: border-box;
   display: flex;
   width: 100%;
   position: absolute;
@@ -27,18 +28,23 @@
 .gallery__buttons__left-chevron {
   box-sizing: border-box;
   cursor: pointer;
-  width: clamp(5px, 3vw, 15px);
-  height: clamp(5px, 3vw, 15px);
+  width: clamp(1rem,  1.5vw, 3vw);
+  height: clamp(1rem, 1.5vw, 3vw);
   background-color: white;
+  padding: 0.5rem;
 }
 .gallery__buttons__right-chevron {
   margin-left: auto;
   margin-right: 0;
   -webkit-mask: url("../../../assets/chevron-right-solid.svg") no-repeat center;
   mask: url("../../../assets/chevron-right-solid.svg") no-repeat center;
+  background-color: var(--grey-400);
+  
 }
 
 .gallery__buttons__left-chevron {
   -webkit-mask: url("../../../assets/chevron-left-solid.svg") no-repeat center;
   mask: url("../../../assets/chevron-left-solid.svg") no-repeat center;
+  background-color: var(--grey-400);
+  
 }

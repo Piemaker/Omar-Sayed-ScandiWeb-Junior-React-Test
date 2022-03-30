@@ -21,6 +21,7 @@ export default class Cart extends Component {
             prices,
             quantity,
             selectedAttributes,
+            id
           } = specificProduct;
           const price = getPriceBasedOnCurrency(prices);
           const {
@@ -37,11 +38,12 @@ export default class Cart extends Component {
                   amount,
                   attributes,
                   selectedAttributes,
+                  boldFont : true
                 }}
               />
               <div className="cart__product__counter__gallery__container">
                 <Counter {...{ quantity, parentId, childId }} />
-                <Gallery {...{ gallery }} />
+                <Gallery {...{ gallery, id }} />
               </div>
             </div>
           );
@@ -50,7 +52,9 @@ export default class Cart extends Component {
     }
     return (
       <article className="cart">
+        <div className="cart__product">
         <h1 className="cart__heading">cart</h1>
+        </div>
         {output}
       </article>
     );

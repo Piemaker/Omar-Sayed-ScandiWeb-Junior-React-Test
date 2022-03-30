@@ -23,7 +23,7 @@ export default class Category extends Component {
     });
 
     this.setState({ data, loading, error, category: this.context.category });
-    console.log("🚀 ~ file: Category.jsx ~ line 28 ~ Category ~ fetchCategory= ~ data", data)
+    // console.log("🚀 ~ file: Category.jsx ~ line 28 ~ Category ~ fetchCategory= ~ data", data)
   };
 
   // LIFE CYCLES
