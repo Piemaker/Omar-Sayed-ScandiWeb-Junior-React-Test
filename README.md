@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# ScandiWeb Junior React Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a minimalist E-Commerce site done as per design provided by ScandiWeb developers as an entry test it offers some features as will be described.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Filtering Pages
+![Filtering Pages](https://media.milanote.com/p/images/1NzmU211hMPf3i/Rkz/Filtering+Page.gif)
 
-### `npm start`
+Pages are filtered based on category by querying the backend.
+## Adding Items
+![Adding Items](https://media.milanote.com/p/images/1NzmU011hMPf3e/Llk/Adding+Items.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Items added using the quick add button will have the first attributes as the default.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Attribute Check
+![Attribute Check](https://media.milanote.com/p/images/1NzmU311hMPf3l/UCy/Product+Page+Picking+Item+Check+Attributes.gif)
 
-### `npm test`
+For items with attributes it has to be checked before being able to add them to the cart
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Unavailable Items
+![Unavailable Items](https://media.milanote.com/p/images/1NzmU211hMPf3j/lUg/Product+Page+Picking+Item+Unavailable+Items.gif)
 
-### `npm run build`
+Unavailable items will not have the quick add button showing as well as having the add button in their product page disabled with text "UNAVAILABLE"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Changing Count / Deleting Items
+![Changing Count / Deleting Items](https://media.milanote.com/p/images/1NzmU111hMPf3f/JsO/Increasing_Decreasing+Count_Removing.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Item count can be changed using +/- either from the minicart or the cart button and the total price and total count changes accordingly, when the count reaches 0 the item is removed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Changing Gallery Photo
+![Changing Gallery Photo](https://media.milanote.com/p/images/1NzmU211hMPf3k/Z9K/Product+Page+Picking+Item+Gallery.gif) 
 
-### `npm run eject`
+The selected gallery photo can be changed by either clicking the photos from the product page or from the minicart/cart carousel.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Changing Currency
+![Changing Currency](https://media.milanote.com/p/images/1NzmU111hMPf3g/l5u/Changing+Currency+MiniCart+%26+Main+Page.gif)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The currency can be selected in the drop down menu and all pages are affected accordingly.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Product Navigation
+![Product Navigation](https://media.milanote.com/p/images/1NzmU011hMPf3d/BFr/Navigating+Products.gif)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The user can click any image in the main page/minicart or cart to access this product.
 
-## Learn More
+## Persisting Cart Items
+![Persisting Cart Items](https://media.milanote.com/p/images/1NzmTZ11hMPf3c/pmb/Presetting+Data.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Added items are stored in browser localStorage.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Mobile View
+![Mobile View](https://media.milanote.com/p/images/1NzniK11hMPf3n/W2z/Mobile+View.gif)
 
-### Code Splitting
+Fully responsive layout.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
