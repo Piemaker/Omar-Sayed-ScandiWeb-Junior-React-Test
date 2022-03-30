@@ -53,4 +53,9 @@ Added items are stored in browser localStorage.
 Fully responsive layout.
 
 # Running the Application
-Use: npm start
+1- npm i 
+2- npm start
+3- Start backend server
+
+Running on Node :v16.13.2
+Windows Machine
