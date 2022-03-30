@@ -4,7 +4,7 @@ This is a minimalist E-Commerce site done as per design provided by ScandiWeb de
 
 
 ## Filtering Pages
-![Filtering Pages](../e-store/src/assets/Filtering%20Page.gif)
+![Filtering Pages](/src/assets/Filtering%20Page.gif)
 
 Pages are filtered based on category by querying the backend.
 ## Adding Items
@@ -52,3 +52,5 @@ Added items are stored in browser localStorage.
 
 Fully responsive layout.
 
+# Running the Application
+Use: npm start
