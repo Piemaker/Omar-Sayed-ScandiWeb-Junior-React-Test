@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Cart, Category, Error, MiniCart, Nav, PDP } from "./components";
 import ProductContext from "./ProductContext";
 import "./normalize.css";
-import "./app.css";
+import "./App.css";
 
 // APOLLO INITIALIZATION
 import {

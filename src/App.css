@@ -1,43 +1,44 @@
 @import "./root.css";
-body{
-    position: relative;
-    padding: 1rem;
-    max-width: var(--maxContainerWidth);
-    margin : 0 auto;
-    font-family: var(--body-font);
-    background: var(--grey-50);
-    font-weight: 400;
-    line-height: 1.75;
+body {
+  position: relative;
+  padding: 1rem;
+  max-width: var(--maxContainerWidth);
+  margin: 0 auto;
+  font-family: var(--body-font);
+  background: var(--grey-50);
+  font-weight: 400;
+  line-height: 1.75;
 }
 ::-webkit-scrollbar {
-    width: 0.5rem;
+  width: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #e4e4e4;
-    border-radius: 100px;
+  background-color: #e4e4e4;
+  border-radius: 100px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-    background-color: var(--green-400);
-    border-radius: 100px;
+  background-color: var(--green-400);
+  border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--green-500);
-
+  background-color: var(--green-500);
 }
 a {
-    text-decoration: none;
-    color : inherit;
-} 
-h1,h2,h3,h4,h5{
-    font-family: var(--heading-font);
+  text-decoration: none;
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--heading-font);
 }
 
 @media only screen and (min-width: 600px) {
-body{
-
+  body {
     padding: 2rem;
+  }
 }
-}
-
