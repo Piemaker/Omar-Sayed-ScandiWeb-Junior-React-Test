@@ -2,28 +2,22 @@
 :root {
   --space: 0.5rem;
 }
-.mini-cart__overlay {
-  display: none;
-  position: absolute;
-  top: 5.5rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.342);
-  z-index: 999;
-}
-.mini-cart__overlay--show {
-  display: block;
-}
+
 .mini-cart {
+  display: none;
   min-width: 175px;
   max-width: 250px;
   position: absolute;
   right: 0;
+  top: 2.5rem;
   z-index: 999;
   background-color: white;
   padding: 1rem;
 }
+.mini-cart--show {
+  display: block;
+}
+
 .mini-cart__header {
   font-size: clamp(0.25rem, 4vw, 0.75rem);
   text-transform: capitalize;

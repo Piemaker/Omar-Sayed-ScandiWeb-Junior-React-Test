@@ -7,4 +7,5 @@ import Error from "./error/Error";
 import PDP from "./product-description-page/PDP";
 import MiniCart from "./cart/minicart/MiniCart";
 import Cart from "./cart/cart/Cart";
-export {Category ,PLP, Loader, Nav, Product, Error, PDP, MiniCart, Cart};
+import MiniCartOverlay from "./cart/minicart/MiniCartOverlay";
+export {Category ,PLP, Loader, Nav, Product, Error, PDP, MiniCart, Cart, MiniCartOverlay};

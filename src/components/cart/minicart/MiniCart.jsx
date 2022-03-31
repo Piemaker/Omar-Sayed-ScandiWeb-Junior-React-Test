@@ -24,7 +24,7 @@ export default class MiniCart extends Component {
             prices,
             quantity,
             selectedAttributes,
-            id
+            id,
           } = specificProduct;
           const price = getPriceBasedOnCurrency(prices);
           const {
@@ -54,39 +54,33 @@ export default class MiniCart extends Component {
       }
     }
     return (
-      <div
-        onClickCapture={(e) => {
-          toggleCart(e);
-        }}
-        className={`mini-cart__overlay ${
-          isCartOpen && "mini-cart__overlay--show"
-        }`}
+      <article
+        className={`mini-cart ${isCartOpen && "mini-cart--show"}`}
+        id="mini-cart"
       >
-        <article className="mini-cart" id="mini-cart">
-          <h2 className="mini-cart__header">
-            <span>my bag</span>, {totalQuantity} items
-          </h2>
-          <div className="mini-cart__container">{output}</div>
-          <div className="mini-cart__total-price">
-            <p className="mini-cart__total-price__title">total</p>
-            <p className="mini-cart__total-price__price">
-              {currentSymbol}
-              {totalPrice.toFixed(4)}
-            </p>
-          </div>
-          <div className="mini-cart__buttons__container">
-            <Link className="mini-cart__buttons" to="/cart">
-              view cart
-            </Link>
-            <Link
-              to="/checkout"
-              className="mini-cart__buttons mini-cart__buttons--checkout"
-            >
-              check out
-            </Link>
-          </div>
-        </article>
-      </div>
+        <h2 className="mini-cart__header">
+          <span>my bag</span>, {totalQuantity} items
+        </h2>
+        <div className="mini-cart__container">{output}</div>
+        <div className="mini-cart__total-price">
+          <p className="mini-cart__total-price__title">total</p>
+          <p className="mini-cart__total-price__price">
+            {currentSymbol}
+            {totalPrice.toFixed(4)}
+          </p>
+        </div>
+        <div className="mini-cart__buttons__container">
+          <Link className="mini-cart__buttons" to="/cart">
+            view cart
+          </Link>
+          <Link
+            to="/checkout"
+            className="mini-cart__buttons mini-cart__buttons--checkout"
+          >
+            check out
+          </Link>
+        </div>
+      </article>
     );
   }
 }

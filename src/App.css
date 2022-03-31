@@ -1,6 +1,9 @@
 @import "./root.css";
-body {
+html{
   position: relative;
+  min-height: 100vh;
+}
+body {
   padding: 1rem;
   max-width: var(--maxContainerWidth);
   margin: 0 auto;

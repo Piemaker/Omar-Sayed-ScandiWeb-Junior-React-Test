@@ -7,6 +7,7 @@ import { apolloClient } from "../../App";
 import ProductContext from "../../ProductContext";
 import Loader from "../loader/Loader";
 import { Link } from "react-router-dom";
+import MiniCart from "../cart/minicart/MiniCart";
 export default class Nav extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +51,7 @@ export default class Nav extends Component {
     if (data.length !== 0) {
       const { clicked } = this.state;
       const { categories, currencies } = data;
-      const { toggleCart, getCartItemCount } = this.context;
+      const { toggleCart, getCartItemCount, isCartOpen } = this.context;
 
       return (
         <nav className="nav">
@@ -80,6 +81,7 @@ export default class Nav extends Component {
             </div>
           </Link>
           <div className="nav__purchase-section">
+              <MiniCart {...isCartOpen}/>
             <div className="nav__purchase-section__currency">
               <p>{symbol}</p>
               <CurrencyDropDown {...{ currencies, setCurrency }} />

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import {useParams}  from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Cart, Category, Error, MiniCart, Nav, PDP } from "./components";
+import { Cart, Category, Error, MiniCartOverlay, Nav, PDP } from "./components";
 import ProductContext from "./ProductContext";
 import "./normalize.css";
 import "./App.css";
@@ -148,7 +148,7 @@ export default class App extends Component {
         >
           <Router>
             <Nav />
-            <MiniCart {...isCartOpen} />
+            <MiniCartOverlay {...{isCartOpen, toggleCart}} />
             <Switch>
               <Route exact path="/" children={<Category />} />
               <Route
