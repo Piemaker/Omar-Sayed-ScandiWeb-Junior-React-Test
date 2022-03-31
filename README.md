@@ -53,9 +53,9 @@ Added items are stored in browser localStorage.
 Fully responsive layout.
 
 # Running the Application
-1- npm i 
-2- npm start
-3- Start backend server
+1. npm i 
+2. npm start
+3. Start backend server [Link Here](https://github.com/scandiweb/junior-react-endpoint)
 
 Running on Node :v16.13.2
 Windows Machine

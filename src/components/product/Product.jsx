@@ -40,7 +40,7 @@ export default class Product extends Component {
 
   // LIFE CYCLES
   render() {
-    const { gallery, name, inStock, id, prices, attributes } = this.props;
+    const { gallery, name, inStock, id, prices } = this.props;
     const { getPriceBasedOnCurrency } = this.context;
     const price = getPriceBasedOnCurrency(prices);
     const {
@@ -49,26 +49,7 @@ export default class Product extends Component {
     } = price;
     const { closeDialog } = this;
     const { showDialog } = this.state;
-    const colorBoxes = attributes.map((attribute, index) => {
-      if (attribute.type === "swatch") {
-        return (
-          <div
-            key={`${attribute.type}-${index}`}
-            className="color-box__container"
-          >
-            {attribute.items.map((item, index) => {
-              return (
-                <div
-                  key={`${attribute.type}-${item.value}`}
-                  className="color-box"
-                  style={{ backgroundColor: item.value }}
-                ></div>
-              );
-            })}
-          </div>
-        );
-      }
-    });
+    
     return (
       <article
         className={`product__container ${
@@ -108,7 +89,6 @@ export default class Product extends Component {
               {amount}
             </p>
           </div>
-          {colorBoxes}
         </Link>
         <AddedDialog showDialog={showDialog} closeDialog={closeDialog} />
       </article>
