@@ -7,7 +7,7 @@ import { apolloClient } from "../../App";
 import ProductContext from "../../ProductContext";
 import Loader from "../loader/Loader";
 import { Link } from "react-router-dom";
-import MiniCart from "../cart/minicart/MiniCart";
+import MiniCart from "../cart/minicart/minicart/MiniCart";
 export default class Nav extends Component {
   constructor(props) {
     super(props);

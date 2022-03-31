@@ -77,8 +77,8 @@
   font-size: 0.9rem;
 }
 .product__text--muted {
-  color: var(--grey-400);
-  font-weight: 100;
+  color: var(--grey-600);
+  font-weight: 400;
   margin: 0 0.25rem 0.25rem 0;
 }
 p {

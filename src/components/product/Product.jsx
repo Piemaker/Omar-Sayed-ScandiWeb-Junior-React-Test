@@ -15,7 +15,10 @@ export default class Product extends Component {
     e.preventDefault();
     const { setCart } = this.context;
     const { id, name, brand, prices, attributes, gallery } = this.props;
-    console.log("🚀 ~ file: Product.jsx ~ line 18 ~ Product ~ attributes", attributes)
+    console.log(
+      "🚀 ~ file: Product.jsx ~ line 18 ~ Product ~ attributes",
+      attributes
+    );
     // SELECT FIRST ATTRIBUTE AS DEFAULT
     const selectedAttributes = attributes.map((attr) => {
       const { id } = attr;
@@ -40,7 +43,7 @@ export default class Product extends Component {
 
   // LIFE CYCLES
   render() {
-    const { gallery, name, inStock, id, prices } = this.props;
+    const { gallery, name, brand, inStock, id, prices } = this.props;
     const { getPriceBasedOnCurrency } = this.context;
     const price = getPriceBasedOnCurrency(prices);
     const {
@@ -49,7 +52,7 @@ export default class Product extends Component {
     } = price;
     const { closeDialog } = this;
     const { showDialog } = this.state;
-    
+
     return (
       <article
         className={`product__container ${
@@ -83,7 +86,7 @@ export default class Product extends Component {
             </div>
           </div>
           <div className="product__text__container">
-            <p className="product__text--muted">{name}</p>
+            <p className="product__text--muted">{brand} {name}</p>
             <p>
               {symbol}
               {amount}

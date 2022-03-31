@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ProductContext from "../../../ProductContext";
 import "./miniCart.css";
-import Counter from "../counter/Counter";
-import Gallery from "../gallery/Gallery";
-import ProductDescription from "../productdescription/ProductDescription";
+import Counter from "../../counter/Counter";
+import Gallery from "../../gallery/Gallery";
+import ProductDescription from "../../productdescription/ProductDescription";
+import ProductContext from "../../../../ProductContext";
 export default class MiniCart extends Component {
   render() {
     const { cart, getPriceBasedOnCurrency, isCartOpen, toggleCart } =
