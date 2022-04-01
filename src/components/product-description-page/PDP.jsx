@@ -7,6 +7,7 @@ import Loader from "../loader/Loader";
 import ColorBox from "./ColorBox";
 import "./pdp.css";
 import TextBox from "./TextBox";
+import { Interweave } from "interweave";
 export default class PDP extends Component {
   constructor(props) {
     super(props);
@@ -165,10 +166,8 @@ export default class PDP extends Component {
                 </button>
               )}
             </div>
-            <div
-              dangerouslySetInnerHTML={{ __html: description }}
-              className="product__details-container__description"
-            ></div>
+
+            <Interweave content={description}></Interweave>
             <AddedDialog showDialog={showDialog} closeDialog={closeDialog} />
           </form>
         </article>
