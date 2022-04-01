@@ -15,7 +15,7 @@ export default class PDP extends Component {
       loading: true,
       error: "",
       imgSrc: "",
-      selectedAttributes: [],
+      selectedAttributes: {},
       showDialog: false,
     };
   }
@@ -38,11 +38,9 @@ export default class PDP extends Component {
     if (e.target.checked) {
       const { name, value } = e.target;
       const { selectedAttributes } = this.state;
-      const changedAttributes = selectedAttributes.filter(
-        (attr) => !attr.hasOwnProperty(name)
-      );
-      changedAttributes.push({ [name]: value });
-      this.setState({ selectedAttributes: changedAttributes });
+      const changedAttributes = { name, value };
+      selectedAttributes[name] = changedAttributes;
+      this.setState(selectedAttributes);
     }
   };
   handleSubmit = (e) => {

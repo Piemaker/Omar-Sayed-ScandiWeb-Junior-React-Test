@@ -12,7 +12,10 @@ export default class ProductDescription extends Component {
       selectedAttributes,
       boldFont = false,
     } = this.props;
-      console.log("🚀 ~ file: ProductDescription.jsx ~ line 15 ~ ProductDescription ~ render ~ selectedAttributes", selectedAttributes)
+    // console.log(
+    // "🚀 ~ file: ProductDescription.jsx ~ line 15 ~ ProductDescription ~ render ~ selectedAttributes",
+    // selectedAttributes
+    // );
 
     return (
       <div className="description">
@@ -39,12 +42,8 @@ export default class ProductDescription extends Component {
               </h2>
               <div className="description__attributes-container">
                 {attribute.items.map((item) => {
-              debugger;
-
                   if (attribute.id === "Color") {
-                    if (
-                      item.value === selectedAttributes[index][attribute.id]
-                    ) {
+                    if (item.value === selectedAttributes[attribute.id].value) {
                       return (
                         <div
                           key={`${attribute.id}-${item.value}`}
@@ -62,7 +61,7 @@ export default class ProductDescription extends Component {
                       );
                     }
                   }
-                  if (item.value === selectedAttributes[index][attribute.id]) {
+                  if (item.value === selectedAttributes[attribute.id].value) {
                     return (
                       <div
                         key={`${attribute.id}-${item.value}`}

@@ -15,14 +15,15 @@ export default class Product extends Component {
     e.preventDefault();
     const { setCart } = this.context;
     const { id, name, brand, prices, attributes, gallery } = this.props;
-    console.log(
-      "🚀 ~ file: Product.jsx ~ line 18 ~ Product ~ attributes",
-      attributes
-    );
+    // console.log(
+    // "🚀 ~ file: Product.jsx ~ line 18 ~ Product ~ attributes",
+    // attributes
+    // );
     // SELECT FIRST ATTRIBUTE AS DEFAULT
-    const selectedAttributes = attributes.map((attr) => {
+    const selectedAttributes = {};
+    attributes.forEach((attr) => {
       const { id } = attr;
-      return { [id]: attr.items[0].value };
+       selectedAttributes[id] = { name :id ,value : attr.items[0].value };
     });
     setCart({
       id,
