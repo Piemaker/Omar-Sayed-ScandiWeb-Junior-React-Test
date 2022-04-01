@@ -5,11 +5,11 @@
 
 .mini-cart {
   display: none;
-  min-width: 175px;
-  max-width: 250px;
+  min-width: 225px;
+  max-width: 300px;
   position: absolute;
   right: 0;
-  top: 2.5rem;
+  top: 2.25rem;
   z-index: 999;
   background-color: white;
   padding: 1rem;
@@ -29,15 +29,16 @@
 }
 .mini-cart__container {
   display: grid;
+  width: 100%;
   grid-row-gap: 16px;
-  max-height: 250px;
+  max-height: 275px;
   overflow: auto;
   padding: var(--space);
 }
 .mini-cart__product {
   display: grid;
   grid-template-columns: 6fr 1fr 5fr;
-  grid-column-gap: 16px;
+  grid-column-gap: 1rem;
 }
 
 .mini-cart__total-price {
