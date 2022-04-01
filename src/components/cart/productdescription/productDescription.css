@@ -43,7 +43,9 @@
   height: clamp(0.3rem, 7.5vh, 1rem);
 }
 .description__attributes__color--selected {
-  transform: scale(1.1);
+  -webkit-box-shadow: 0px 0px 0px 2px #ffffff,
+    0px 0px 0px 4px rgba(0, 255, 70, 0.75);
+  box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px rgb(212, 106, 19);
 }
 
 .description__attributes--selected {

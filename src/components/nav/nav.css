@@ -55,15 +55,18 @@
 }
 .nav__purchase-section__currency__dropdown {
   position: absolute;
-  height: 0;
+  top: 1.5rem;
+  left: -1rem;
+  z-index: 100;
   display: none;
   min-width: 4rem;
   margin: 0;
   padding: 10px 5px 10px 5px;
-  top: 10px;
-  left: 0;
   list-style: none;
-  z-index: 100;
+  background-color: white;
+  box-shadow: var(--shadow-4);
+  border-radius: var(--borderRadius);
+  text-align: center;
 }
 .nav__purchase-section__currency:hover
   .nav__purchase-section__currency__dropdown {

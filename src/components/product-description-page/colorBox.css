@@ -26,6 +26,8 @@
   text-align: center;
 }
 .color-box__container input:checked + .color-box__label label {
-  transform: scale(1.2);
-  border: black solid 1px;
+  transform: scale(1.1);
+  -webkit-box-shadow: 0px 0px 0px 2px #ffffff,
+    0px 0px 0px 4px rgba(0, 255, 70, 0.75);
+  box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px rgb(212, 106, 19);
 }
