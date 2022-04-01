@@ -32,12 +32,17 @@ export default class Gallery extends Component {
   render() {
     const { name, gallery, id } = this.props;
     const { index } = this.state;
+    const isSinglePhoto = gallery.length <= 1;
     return (
       <div className="gallery">
         <Link to={`/product/${id}`}>
           <img className="gallery__img" src={gallery[index]} alt={name} />
         </Link>
-        <div className="gallery__buttons">
+        <div
+          className={`gallery__buttons ${
+            isSinglePhoto && "gallery__buttons--hide"
+          }`}
+        >
           <div
             className="gallery__buttons__left-chevron"
             onClick={this.handlePrev}

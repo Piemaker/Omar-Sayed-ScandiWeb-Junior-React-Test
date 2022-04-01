@@ -7,7 +7,7 @@
   height: 100%;
   object-fit: cover;
 }
-.gallery__img:hover + .gallery__buttons {
+.gallery:hover > .gallery__buttons {
   opacity: 1;
 }
 .gallery__buttons {
@@ -19,16 +19,16 @@
   transform: translateY(-50%);
   color: white;
   opacity: 0;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-out;
 }
-.gallery__buttons:hover {
-  opacity: 1;
+.gallery__buttons--hide {
+  display: none;
 }
 .gallery__buttons__right-chevron,
 .gallery__buttons__left-chevron {
   box-sizing: border-box;
   cursor: pointer;
-  width: clamp(1rem,  1.5vw, 3vw);
+  width: clamp(1rem, 1.5vw, 3vw);
   height: clamp(1rem, 1.5vw, 3vw);
   background-color: white;
   padding: 0.5rem;
@@ -39,12 +39,10 @@
   -webkit-mask: url("../../../assets/chevron-right-solid.svg") no-repeat center;
   mask: url("../../../assets/chevron-right-solid.svg") no-repeat center;
   background-color: var(--grey-400);
-  
 }
 
 .gallery__buttons__left-chevron {
   -webkit-mask: url("../../../assets/chevron-left-solid.svg") no-repeat center;
   mask: url("../../../assets/chevron-left-solid.svg") no-repeat center;
   background-color: var(--grey-400);
-  
 }
