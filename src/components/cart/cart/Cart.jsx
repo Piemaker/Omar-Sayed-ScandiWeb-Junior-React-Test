@@ -7,7 +7,7 @@ import "./cart.css";
 
 export default class Cart extends Component {
   render() {
-    const { cart, getPriceBasedOnCurrency, isCartOpen, toggleCart } =
+    const { cart, getPriceBasedOnCurrency} =
       this.context;
     let output = [];
     if (Object.keys(cart).length !== 0) {
