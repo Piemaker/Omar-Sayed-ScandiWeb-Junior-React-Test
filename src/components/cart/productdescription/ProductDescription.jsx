@@ -29,15 +29,15 @@ export default class ProductDescription extends Component {
         </p>
         {attributes.map((attribute, index) => {
           return (
-            <div className="description__outer-attributes__container">
+            <div
+              key={attribute.id}
+              className="description__outer-attributes__container"
+            >
               <h2 className="description__outer-attributes__container__heading">
                 {attribute.name}
               </h2>
 
-              <div
-                key={attribute.id}
-                className="description__attributes-container"
-              >
+              <div className="description__attributes-container">
                 {attribute.items.map((item) => {
                   if (attribute.id === "Color") {
                     if (

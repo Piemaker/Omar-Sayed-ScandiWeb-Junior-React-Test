@@ -4,7 +4,6 @@ import "./plp.css";
 export default class PLP extends Component {
   render() {
     const { category } = this.props;
-    console.log("🚀 ~ file: PLP.jsx ~ line 7 ~ PLP ~ render ~ category", category)
     return (
       <main>
         <h2 className="category-title">{category.name}</h2>

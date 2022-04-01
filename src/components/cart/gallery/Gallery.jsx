@@ -12,7 +12,7 @@ export default class Gallery extends Component {
   // FUNCTIONS
   handleNext = () => {
     const { index } = this.state;
-    const { gallery, id } = this.props;
+    const { gallery } = this.props;
     if (index < gallery.length - 1) {
       this.setState({ index: index + 1 });
     } else {

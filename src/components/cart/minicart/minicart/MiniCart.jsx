@@ -7,8 +7,7 @@ import ProductDescription from "../../productdescription/ProductDescription";
 import ProductContext from "../../../../ProductContext";
 export default class MiniCart extends Component {
   render() {
-    const { cart, getPriceBasedOnCurrency, isCartOpen, toggleCart } =
-      this.context;
+    const { cart, getPriceBasedOnCurrency, isCartOpen } = this.context;
     let output = [];
     let totalQuantity = 0;
     let totalPrice = 0;
@@ -66,7 +65,7 @@ export default class MiniCart extends Component {
           <p className="mini-cart__total-price__title">total</p>
           <p className="mini-cart__total-price__price">
             {currentSymbol}
-            {totalPrice.toFixed(4)}
+            {totalPrice.toFixed(2)}
           </p>
         </div>
         <div className="mini-cart__buttons__container">

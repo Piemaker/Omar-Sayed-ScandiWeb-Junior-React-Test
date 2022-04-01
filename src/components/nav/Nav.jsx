@@ -8,6 +8,7 @@ import ProductContext from "../../ProductContext";
 import Loader from "../loader/Loader";
 import { Link } from "react-router-dom";
 import MiniCart from "../cart/minicart/minicart/MiniCart";
+import { NavLink } from "react-router-dom";
 export default class Nav extends Component {
   constructor(props) {
     super(props);
@@ -59,18 +60,19 @@ export default class Nav extends Component {
             <ul>
               {categories.map((category, index) => {
                 return (
-                  <button
-                    className={`${
-                      clicked === category.name
-                        ? "nav__category-items--clicked"
-                        : ""
-                    }`}
-                    key={`${index}${category.name}`}
-                    value={category.name}
-                    onClick={this.handleClick}
-                  >
-                    {category.name}
-                  </button>
+                  <NavLink to="/" key = {`nav-link-${category.name}`}>
+                    <button
+                      className={`${
+                        clicked === category.name
+                          ? "nav__category-items--clicked"
+                          : ""
+                      }`}
+                      value={category.name}
+                      onClick={this.handleClick}
+                    >
+                      {category.name}
+                    </button>
+                  </NavLink>
                 );
               })}
             </ul>
@@ -81,7 +83,7 @@ export default class Nav extends Component {
             </div>
           </Link>
           <div className="nav__purchase-section">
-              <MiniCart {...isCartOpen}/>
+            <MiniCart {...isCartOpen} />
             <div className="nav__purchase-section__currency">
               <p>{symbol}</p>
               <CurrencyDropDown {...{ currencies, setCurrency }} />
